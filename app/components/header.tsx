@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState<keyof typeof megaMenuContent | null>(null);
@@ -219,10 +220,17 @@ export default function Header() {
       >
         <div className="flex items-center justify-between h-16 md:h-20 relative z-20">
           
-          {/* Logo */}
+          {/* Logo - UPDATED WITH ACTUAL LOGO */}
           <a href="/" className="flex items-center space-x-2 md:space-x-3 group">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-sm rounded-full border-2 border-white/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <span className="text-white font-bold text-lg md:text-xl">S</span>
+            <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+              <Image
+                src="/logo/Sarsen.svg" // Your logo from public/Logo folder
+                alt="Sarsen & Company Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+                priority
+              />
             </div>
             <div className="text-white">
               <div className="text-lg md:text-xl font-bold leading-tight">Sarsen</div>
