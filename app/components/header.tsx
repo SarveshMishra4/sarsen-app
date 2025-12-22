@@ -3,9 +3,9 @@
 import { useState } from "react";
 
 export default function Header() {
-  const [activeMenu, setActiveMenu] = useState(null);
+  const [activeMenu, setActiveMenu] = useState<keyof typeof megaMenuContent | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileSubmenu, setMobileSubmenu] = useState(null);
+  const [mobileSubmenu, setMobileSubmenu] = useState<keyof typeof megaMenuContent | null>(null);
 
   const megaMenuContent = {
     about: {
@@ -85,7 +85,7 @@ export default function Header() {
     },
   };
 
-  const handleMouseEnter = (menu) => {
+  const handleMouseEnter = (menu: keyof typeof megaMenuContent) => {
     if (window.innerWidth >= 768) {
       setActiveMenu(menu);
     }
@@ -97,7 +97,7 @@ export default function Header() {
     }
   };
 
-  const toggleMobileSubmenu = (menu) => {
+  const toggleMobileSubmenu = (menu: keyof typeof megaMenuContent) => {
     setMobileSubmenu(mobileSubmenu === menu ? null : menu);
   };
 
@@ -131,7 +131,7 @@ export default function Header() {
                     ? 'text-[#002855] bg-white rounded-t-lg pt-3 pb-6' 
                     : 'text-white hover:text-blue-200 py-3'
                 }`}
-                onMouseEnter={() => handleMouseEnter(menu)}
+                onMouseEnter={() => handleMouseEnter(menu as keyof typeof megaMenuContent)}
                 style={{
                   marginBottom: activeMenu === menu ? '-1.25rem' : '0',
                   zIndex: activeMenu === menu ? 30 : 20,
@@ -246,7 +246,7 @@ export default function Header() {
                 <div key={menu} className="border-b border-gray-200 pb-2">
                   <button
                     className="w-full flex items-center justify-between py-3 text-gray-900 font-semibold hover:text-blue-600 transition-colors"
-                    onClick={() => toggleMobileSubmenu(menu)}
+                    onClick={() => toggleMobileSubmenu(menu as keyof typeof megaMenuContent)}
                   >
                     <span className="capitalize">{menu}</span>
                     <svg 
