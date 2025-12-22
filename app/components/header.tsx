@@ -302,11 +302,7 @@ export default function Header() {
 
                 {/* Section 2: Links - Single column with descriptions */}
                 <div className="w-[50%] p-8 border-r border-gray-200">
-                  <div className="pt-2 mb-2">
-                    <p className="text-sm text-gray-500 uppercase tracking-wider font-semibold mb-2">
-                      Explore {activeMenu}
-                    </p>
-                  </div>
+                  
                   <div className="space-y-1">
                     {megaMenuContent[activeMenu].links.slice(0, 7).map((link, idx) => (
                       <a
