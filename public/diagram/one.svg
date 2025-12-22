@@ -1,0 +1,60 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="white"/>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Agile Development Timeline
+  </text>
+  
+  <!-- Timeline -->
+  <line x1="50" y1="100" x2="350" y2="100" stroke="#ccc" stroke-width="2"/>
+  
+  <!-- Sprint 01 -->
+  <rect x="70" y="80" width="60" height="40" fill="url(#lines1)" stroke="#999" stroke-width="1"/>
+  <text x="100" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Sprint 01</text>
+  
+  <!-- Code Block -->
+  <rect x="150" y="80" width="60" height="40" fill="url(#lines2)" stroke="#999" stroke-width="1"/>
+  <text x="180" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Code</text>
+  
+  <!-- Test Block -->
+  <rect x="230" y="80" width="60" height="40" fill="url(#lines3)" stroke="#999" stroke-width="1"/>
+  <text x="260" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Test</text>
+  
+  <!-- Sprint 02 -->
+  <rect x="280" y="80" width="60" height="40" fill="url(#lines4)" stroke="#999" stroke-width="1"/>
+  <text x="310" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Sprint 02</text>
+  
+  <!-- Arrow -->
+  <polygon points="355,100 345,95 345,105" fill="#666"/>
+  
+  <!-- User Stories (dotted lines) -->
+  <line x1="100" y1="130" x2="100" y2="180" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="180" y1="130" x2="180" y2="180" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="260" y1="130" x2="260" y2="180" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="310" y1="130" x2="310" y2="180" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+  
+  <!-- Launch -->
+  <circle cx="360" cy="180" r="20" fill="url(#lines5)" stroke="#999" stroke-width="1"/>
+  <text x="360" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#333">Launch</text>
+  
+  <!-- Line patterns -->
+  <defs>
+    <pattern id="lines1" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#eee" stroke-width="1"/>
+    </pattern>
+    <pattern id="lines2" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(90)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#ddd" stroke-width="1"/>
+    </pattern>
+    <pattern id="lines3" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(135)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#ccc" stroke-width="1"/>
+    </pattern>
+    <pattern id="lines4" patternUnits="userSpaceOnUse" width="5" height="5">
+      <line x1="0" y1="0" x2="5" y2="5" stroke="#bbb" stroke-width="0.5"/>
+      <line x1="5" y1="0" x2="0" y2="5" stroke="#bbb" stroke-width="0.5"/>
+    </pattern>
+    <pattern id="lines5" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="4" cy="4" r="2" stroke="#aaa" stroke-width="0.5" fill="none"/>
+    </pattern>
+  </defs>
+</svg>

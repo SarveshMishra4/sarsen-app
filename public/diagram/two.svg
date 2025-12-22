@@ -1,0 +1,66 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="white"/>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+    Performance Metrics
+  </text>
+  
+  <!-- 90% Circle -->
+  <circle cx="100" cy="120" r="40" fill="none" stroke="#eee" stroke-width="8"/>
+  <circle cx="100" cy="120" r="40" fill="none" stroke="url(#diagonalLines1)" stroke-width="8" 
+          stroke-dasharray="226, 251" stroke-linecap="round" transform="rotate(-90 100 120)"/>
+  <text x="100" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">90%</text>
+  <text x="100" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    Financial Consistency
+  </text>
+  
+  <!-- 40% Circle -->
+  <circle cx="200" cy="120" r="40" fill="none" stroke="#eee" stroke-width="8"/>
+  <circle cx="200" cy="120" r="40" fill="none" stroke="url(#diagonalLines2)" stroke-width="8" 
+          stroke-dasharray="100, 251" stroke-linecap="round" transform="rotate(-90 200 120)"/>
+  <text x="200" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">40%</text>
+  <text x="200" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    Efficiency
+  </text>
+  
+  <!-- 60% Circle -->
+  <circle cx="300" cy="120" r="40" fill="none" stroke="#eee" stroke-width="8"/>
+  <circle cx="300" cy="120" r="40" fill="none" stroke="url(#verticalLines)" stroke-width="8" 
+          stroke-dasharray="151, 251" stroke-linecap="round" transform="rotate(-90 300 120)"/>
+  <text x="300" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">60%</text>
+  <text x="300" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    Quality
+  </text>
+  
+  <!-- Bottom boxes -->
+  <rect x="50" y="200" width="300" height="80" fill="url(#gridPattern)" stroke="#ccc" stroke-width="1"/>
+  <text x="200" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">
+    Vital Service Benefits
+  </text>
+  <text x="200" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • Reduced inconsistencies
+  </text>
+  <text x="200" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • Improved efficiency
+  </text>
+  <text x="200" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#666">
+    • Enhanced quality
+  </text>
+  
+  <defs>
+    <pattern id="diagonalLines1" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#888" stroke-width="1.5"/>
+    </pattern>
+    <pattern id="diagonalLines2" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(135)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#888" stroke-width="1.5"/>
+    </pattern>
+    <pattern id="verticalLines" patternUnits="userSpaceOnUse" width="10" height="10">
+      <line x1="5" y1="0" x2="5" y2="10" stroke="#888" stroke-width="1.5"/>
+    </pattern>
+    <pattern id="gridPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+      <line x1="0" y1="0" x2="20" y2="0" stroke="#eee" stroke-width="0.5"/>
+      <line x1="0" y1="0" x2="0" y2="20" stroke="#eee" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+</svg>
