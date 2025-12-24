@@ -1,456 +1,494 @@
-"use client";
+// app/page.tsx
+'use client';
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-export default function HomePage() {
-  const [typingText, setTypingText] = useState("");
-  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const painPoints = [
-    "Struggling with Customer Acquisition Cost",
-    "Unable to reach your ARR targets",
-    "Finding it hard to achieve Product-Market Fit",
-    "Confused about your Go-To-Market strategy",
-    "Facing challenges in fundraising readiness",
-    "Needing clarity on unit economics"
-  ];
-
-  // Typing effect
-  useEffect(() => {
-    const currentPhrase = painPoints[currentPhraseIndex];
-    const typingSpeed = isDeleting ? 30 : 80;
-    const pauseTime = isDeleting ? 500 : 2000;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting && typingText === currentPhrase) {
-        setTimeout(() => setIsDeleting(true), pauseTime);
-      } else if (isDeleting && typingText === "") {
-        setIsDeleting(false);
-        setCurrentPhraseIndex((prev) => (prev + 1) % painPoints.length);
-      } else {
-        setTypingText(
-          isDeleting
-            ? currentPhrase.substring(0, typingText.length - 1)
-            : currentPhrase.substring(0, typingText.length + 1)
-        );
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [typingText, isDeleting, currentPhraseIndex]);
-
+// =====================================================
+// HERO SECTION COMPONENT
+// Dark blue background with search bar and illustration
+// =====================================================
+const HeroSection = () => {
   return (
-    <div className="bg-[#002855] min-h-screen">
-      
-      {/* HERO SECTION */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+    <section className="relative bg-[#0A1E3D] min-h-[500px] pt-20 pb-16 px-4 overflow-hidden">
+      {/* Decorative stars/dots in background */}
+      <div className="absolute top-20 right-10 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
+      <div className="absolute bottom-32 right-1/4 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
+      <div className="absolute top-40 left-20 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
+
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          {/* Left: Search Bar and Text */}
-          <div className="space-y-6">
-            {/* Search Bar */}
-            <div className="relative">
-              <input 
-                type="text" 
-                placeholder="Search ..." 
-                className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-colors"
-              />
-              <svg className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+          {/* Left Column - Search Bar */}
+          <div className="space-y-8">
+            {/* Search Bar Container */}
+            <div className="max-w-md">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search services, reports, resources..."
+                  className="w-full px-6 py-4 rounded-lg bg-[#4A5B75] text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-lg"
+                />
+                <svg
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
             </div>
 
-            {/* Typing Text */}
-            <div className="space-y-2 min-h-[80px]">
-              <h1 className="text-2xl md:text-3xl text-white font-medium">
-                {typingText}
-                <span className="animate-pulse">|</span>
+            {/* Headline Text */}
+            <div>
+              <h1 className="text-2xl md:text-3xl text-white font-light">
+                Struggling with Customer Acquisition Cost?
               </h1>
             </div>
           </div>
 
-          {/* Right: Gear Flow Diagram */}
-          <div className="flex justify-center items-center">
-            <svg viewBox="0 0 450 280" className="w-full max-w-md">
-              <defs>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Flowing Path */}
-              <path 
-                d="M 50 140 Q 120 80, 180 140 T 340 140 L 380 120" 
-                fill="none" 
-                stroke="rgba(255,255,255,0.3)" 
-                strokeWidth="2" 
-                strokeDasharray="5,5"
-              />
-
-              {/* Small Gear 1 */}
-              <g transform="translate(80, 140)">
-                <circle cx="0" cy="0" r="30" fill="none" stroke="#60A5FA" strokeWidth="2.5" filter="url(#glow)" />
-                <circle cx="0" cy="0" r="12" fill="#60A5FA" opacity="0.3" />
-                {[0, 60, 120, 180, 240, 300].map((angle, i) => (
-                  <line 
-                    key={i}
-                    x1="0" 
-                    y1="0" 
-                    x2={Math.cos(angle * Math.PI / 180) * 25} 
-                    y2={Math.sin(angle * Math.PI / 180) * 25}
-                    stroke="#60A5FA" 
-                    strokeWidth="2"
-                  />
-                ))}
-              </g>
-
-              {/* Medium Gear 2 */}
-              <g transform="translate(200, 140)">
-                <circle cx="0" cy="0" r="45" fill="none" stroke="#3B82F6" strokeWidth="3" filter="url(#glow)" />
-                <circle cx="0" cy="0" r="18" fill="#3B82F6" opacity="0.3" />
-                {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => (
-                  <line 
-                    key={i}
-                    x1="0" 
-                    y1="0" 
-                    x2={Math.cos(angle * Math.PI / 180) * 38} 
-                    y2={Math.sin(angle * Math.PI / 180) * 38}
-                    stroke="#3B82F6" 
-                    strokeWidth="2.5"
-                  />
-                ))}
-              </g>
-
-              {/* Large Gear 3 */}
-              <g transform="translate(340, 140)">
-                <circle cx="0" cy="0" r="55" fill="none" stroke="#1D4ED8" strokeWidth="3.5" filter="url(#glow)" />
-                <circle cx="0" cy="0" r="22" fill="#1D4ED8" opacity="0.3" />
-                {[0, 36, 72, 108, 144, 180, 216, 252, 288, 324].map((angle, i) => (
-                  <line 
-                    key={i}
-                    x1="0" 
-                    y1="0" 
-                    x2={Math.cos(angle * Math.PI / 180) * 48} 
-                    y2={Math.sin(angle * Math.PI / 180) * 48}
-                    stroke="#1D4ED8" 
-                    strokeWidth="3"
-                  />
-                ))}
-              </g>
-
-              {/* Arrow */}
-              <defs>
-                <marker id="arrowhead-white" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-                  <polygon points="0 0, 10 3, 0 6" fill="rgba(255,255,255,0.6)" />
-                </marker>
-              </defs>
-              <path 
-                d="M 395 120 L 420 100" 
-                stroke="rgba(255,255,255,0.6)" 
-                strokeWidth="2.5" 
-                markerEnd="url(#arrowhead-white)"
-              />
-
-              {/* Sparkle */}
-              <g transform="translate(410, 70)">
-                <path d="M 0,-8 L 0,8 M -8,0 L 8,0" stroke="#60A5FA" strokeWidth="2" opacity="0.8" />
-                <circle cx="0" cy="0" r="3" fill="#60A5FA" opacity="0.6" />
-              </g>
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      {/* REPORT SECTION */}
-      <section className="py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-0">
-              
-              {/* Left: Text */}
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  Report on Indian Landscape
-                </h2>
-                <div className="space-y-2 text-white/70 text-sm md:text-base">
-                  <p>Are You a Founder ? Are You a Founder ?Are You a Founder ?Are You</p>
-                  <p>a Founder ? Are You a Founder ?Are You a Founder ? Are You a</p>
-                  <p>Founder ?</p>
-                </div>
-              </div>
-
-              {/* Right: Report Card */}
-              <div className="bg-white/10 p-8 md:p-12 flex flex-col justify-center items-center">
-                <div className="w-full max-w-xs">
-                  {/* Report Thumbnail */}
-                  <div className="aspect-[3/4] bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mb-6 relative overflow-hidden shadow-2xl">
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
-                      <div className="w-16 h-16 border-4 border-white rounded-full mb-4 flex items-center justify-center">
-                        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />
-                        </svg>
-                      </div>
-                      <h3 className="text-xl font-bold mb-2">2025 Report</h3>
-                      <p className="text-sm opacity-90">Indian Startup Landscape</p>
-                    </div>
-                    {/* Decorative circles */}
-                    <div className="absolute top-4 right-4 space-y-2">
-                      <div className="w-3 h-3 bg-white rounded-full"></div>
-                      <div className="w-3 h-3 bg-white rounded-full"></div>
-                      <div className="w-3 h-3 bg-white rounded-full"></div>
-                    </div>
-                  </div>
-
-                  {/* Download Button */}
-                  <button className="w-full py-3 bg-white text-[#002855] font-semibold rounded-lg hover:bg-blue-50 transition-colors shadow-lg">
-                    Download
-                  </button>
-                </div>
-              </div>
+          {/* Right Column - Illustration */}
+          <div className="relative h-64 md:h-80 flex items-center justify-center">
+            {/* Placeholder for SVG Illustration - Replace with your own */}
+            <div className="relative w-full h-full flex items-center justify-end">
+              {/* Curved path with gears illustration */}
+              <svg viewBox="0 0 400 300" className="w-full h-full max-w-md ml-auto">
+                {/* Curved flowing line */}
+                <path
+                  d="M 50 150 Q 150 80, 250 150 T 380 120"
+                  stroke="#4A90E2"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeDasharray="5,5"
+                  opacity="0.6"
+                />
+                
+                {/* Small gear - left */}
+                <circle cx="80" cy="120" r="25" stroke="#4A90E2" strokeWidth="2" fill="none" />
+                <circle cx="80" cy="120" r="15" stroke="#4A90E2" strokeWidth="2" fill="none" />
+                <line x1="65" y1="120" x2="95" y2="120" stroke="#4A90E2" strokeWidth="1" />
+                <line x1="80" y1="105" x2="80" y2="135" stroke="#4A90E2" strokeWidth="1" />
+                
+                {/* Medium gear - center */}
+                <circle cx="200" cy="150" r="35" stroke="#4A90E2" strokeWidth="2" fill="none" />
+                <circle cx="200" cy="150" r="20" stroke="#4A90E2" strokeWidth="2" fill="none" />
+                <line x1="180" y1="150" x2="220" y2="150" stroke="#4A90E2" strokeWidth="1" />
+                <line x1="200" y1="130" x2="200" y2="170" stroke="#4A90E2" strokeWidth="1" />
+                
+                {/* Large gear - right */}
+                <circle cx="330" cy="140" r="45" stroke="#4A90E2" strokeWidth="2" fill="none" />
+                <circle cx="330" cy="140" r="28" stroke="#4A90E2" strokeWidth="2" fill="none" />
+                <line x1="305" y1="140" x2="355" y2="140" stroke="#4A90E2" strokeWidth="1" />
+                <line x1="330" y1="115" x2="330" y2="165" stroke="#4A90E2" strokeWidth="1" />
+                
+                {/* Arrow at the end */}
+                <path d="M 370 120 L 390 130 L 370 140" stroke="#4A90E2" strokeWidth="2" fill="none" />
+              </svg>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* SARSEN & COMPANY HELPS SECTION */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="text-center md:text-left mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Sarsen & Company Helps
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// REPORT SECTION COMPONENT
+// Light blue/gray background with report preview card
+// =====================================================
+const ReportSection = () => {
+  return (
+    <section className="bg-[#8B9EB0] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          
+          {/* Left Column - Text Content */}
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
+              Report on Indian Startup Landscape
             </h2>
-            <div className="space-y-2 text-white/70 text-sm md:text-base">
-              <p>Are You a Founder ? Are You a Founder ?Are You a Founder ?Are You</p>
-              <p>a Founder ? Are You a Founder ?Are You a Founder ? Are You a</p>
-              <p>Founder ?</p>
+            <div className="space-y-2">
+              <p className="text-white text-sm leading-relaxed">
+                Get comprehensive insights into the Indian startup ecosystem with our latest research report. 
+                Covering funding trends, sector-wise analysis, growth metrics, and emerging opportunities 
+                across tier-1 and tier-2 cities. Essential reading for founders, investors, and business 
+                leaders looking to understand the evolving landscape of Indian entrepreneurship.
+              </p>
             </div>
           </div>
 
-          {/* Bullet Points */}
-          <div className="space-y-3 max-w-2xl">
-            <div className="flex items-start gap-3 text-white">
-              <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-base md:text-lg">Sarsen & Company Helps</p>
-            </div>
-            <div className="flex items-start gap-3 text-white">
-              <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-base md:text-lg">Sarsen & Company Helps Sarsen & Company Helps</p>
-            </div>
-            <div className="flex items-start gap-3 text-white">
-              <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-              <p className="text-base md:text-lg">Sarsen & Company Helps</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FOUNDER QUOTE SECTION */}
-      <section className="py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            
-            {/* Left: Quote Card */}
-            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-2xl">
-              <div className="space-y-4 text-gray-700 text-sm md:text-base mb-6">
-                <p>Are You a Founder ? Are You a Founder ?Are You a Founder ?Are You</p>
-                <p>a Founder ? Are You a Founder ?Are You a Founder ? Are You a</p>
-                <p>Founder ? Are You a Founder ?Are You a Founder ? Are You a Founder ?</p>
-              </div>
-              <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                <p className="text-gray-900 font-semibold">- Kunal Shah (Cred)</p>
-              </div>
-            </div>
-
-            {/* Right: Founder Image */}
-            <div className="flex justify-center md:justify-end">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden shadow-2xl">
-                {/* Placeholder for founder image */}
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-32 h-32 bg-white/50 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <svg className="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
+          {/* Right Column - Report Card */}
+          <div className="relative">
+            <div className="bg-white rounded-lg shadow-2xl overflow-hidden max-w-md ml-auto">
+              {/* Report Preview Image - Replace with actual report preview */}
+              <div className="bg-[#1E5A8E] h-64 relative">
+                {/* Blue gradient background representing report cover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1E5A8E] to-[#2B7AB8] flex items-center justify-center">
+                  <div className="text-white text-center p-8">
+                    {/* Circular elements */}
+                    <div className="flex justify-center items-center space-x-4 mb-4">
+                      <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-full bg-white/40"></div>
+                      </div>
                     </div>
-                    <p className="text-gray-500 font-medium">Founder Photo</p>
+                    {/* Vertical dots indicator */}
+                    <div className="flex flex-col items-end absolute right-8 top-1/2 transform -translate-y-1/2 space-y-2">
+                      <div className="w-3 h-3 rounded-full bg-white"></div>
+                      <div className="w-3 h-3 rounded-full bg-white/60"></div>
+                      <div className="w-3 h-3 rounded-full bg-white/40"></div>
+                      <div className="w-3 h-3 rounded-full bg-white/20"></div>
+                    </div>
+                    <div className="text-xs uppercase tracking-wider">Report Preview</div>
                   </div>
+                </div>
+              </div>
+              
+              {/* Download Button */}
+              <div className="p-6 bg-white">
+                <button className="w-full bg-white border-2 border-gray-300 text-gray-700 py-3 px-6 rounded hover:bg-gray-50 transition-colors font-medium">
+                  Download
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// COMPANY HELPS SECTION
+// Dark blue background with bullet points
+// =====================================================
+const CompanyHelpsSection = () => {
+  return (
+    <section className="bg-[#0A1E3D] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="max-w-3xl">
+          
+          {/* Section Heading */}
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-8">
+            How Sareen & Company Helps
+          </h2>
+
+          {/* Description Text */}
+          <div className="mb-8">
+            <p className="text-gray-300 text-sm leading-relaxed">
+              We partner with founders and business leaders to navigate the complexities of building 
+              and scaling successful ventures. Our data-driven approach combines strategic consulting, 
+              hands-on execution support, and deep industry expertise to help you achieve sustainable 
+              growth and overcome critical business challenges.
+            </p>
+          </div>
+
+          {/* Bullet Point List */}
+          <ul className="space-y-3 text-white">
+            <li className="flex items-start">
+              <span className="text-blue-400 mr-3 mt-1">•</span>
+              <span className="text-gray-300">Strategic business diagnostics and direction setting for sustainable growth</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-400 mr-3 mt-1">•</span>
+              <span className="text-gray-300">Product-market fit validation and go-to-market strategy development</span>
+            </li>
+            <li className="flex items-start">
+              <span className="text-blue-400 mr-3 mt-1">•</span>
+              <span className="text-gray-300">Business turnaround services and operational excellence implementation</span>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// FOUNDERS SECTION COMPONENT
+// Dark blue background with animated founder cards
+// Features: Dissolving image animation + card sliding from left
+// =====================================================
+const FoundersSection = () => {
+  const [activeFounder, setActiveFounder] = useState(0);
+
+  // Array of founders data - Replace with actual founder information
+  const founders = [
+    {
+      id: 1,
+      name: "Komal Shah",
+      role: "Founder & CEO",
+      quote: "Every startup faces unique challenges, but the fundamentals of building a successful business remain consistent. At Sareen & Company, we help founders navigate uncertainty with clarity, data, and actionable strategies that drive real results.",
+      image: "/founder1.jpg"
+    },
+    {
+      id: 2,
+      name: "Rajesh Sareen",
+      role: "Co-Founder & Strategy Head",
+      quote: "Innovation without execution is just imagination. We work alongside founders to transform strategic vision into operational reality, ensuring that every decision moves the business forward.",
+      image: "/founder2.jpg"
+    },
+    {
+      id: 3,
+      name: "Priya Malhotra",
+      role: "Partner, Growth & Marketing",
+      quote: "Customer acquisition is both an art and a science. Our approach combines creative thinking with rigorous data analysis to help businesses build sustainable growth engines that scale.",
+      image: "/founder3.jpg"
+    },
+    {
+      id: 4,
+      name: "Amit Verma",
+      role: "Partner, Operations",
+      quote: "Operational excellence isn't about perfection, it's about continuous improvement. We help businesses build systems that adapt, scale, and deliver consistent value to customers.",
+      image: "/founder4.jpg"
+    }
+  ];
+
+  // Auto-rotate founders every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFounder((prev) => (prev + 1) % founders.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [founders.length]);
+
+  return (
+    <section className="bg-[#0A1E3D] py-20 px-4 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Column - Quote Card with Slide-in Animation */}
+          <div 
+            key={`card-${activeFounder}`}
+            className="animate-slideInLeft"
+          >
+            <div className="bg-white rounded-lg p-8 md:p-12 shadow-2xl max-w-xl">
+              <div className="space-y-6">
+                <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                  {founders[activeFounder].quote}
+                </p>
+                <div className="pt-4 border-t border-gray-200">
+                  <p className="text-gray-900 font-semibold text-lg">
+                    {founders[activeFounder].name}
+                  </p>
+                  <p className="text-gray-600 text-sm">
+                    {founders[activeFounder].role}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* FREE RESOURCES SECTION */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center md:text-left">
+          {/* Right Column - Founder Image with Dissolve Animation */}
+          <div className="relative h-96 flex items-center justify-center lg:justify-end">
+            <div 
+              key={`image-${activeFounder}`}
+              className="relative w-80 h-96 rounded-lg overflow-hidden shadow-2xl animate-dissolve"
+            >
+              {/* Placeholder for founder image - Replace with actual images */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
+                <div className="w-32 h-32 rounded-full bg-gray-600 flex items-center justify-center">
+                  <svg className="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                <div className="absolute bottom-4 left-4 right-4 text-white text-center">
+                  <p className="font-semibold text-lg">{founders[activeFounder].name}</p>
+                </div>
+              </div>
+              {/* Uncomment below and use Next.js Image when you have actual images */}
+              {/* <Image 
+                src={founders[activeFounder].image} 
+                alt={founders[activeFounder].name}
+                fill
+                className="object-cover"
+              /> */}
+            </div>
+
+            {/* Navigation Dots */}
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 lg:translate-x-0 lg:left-auto lg:right-8 flex space-x-2">
+              {founders.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveFounder(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeFounder 
+                      ? 'bg-blue-400 w-8' 
+                      : 'bg-gray-500 hover:bg-gray-400'
+                  }`}
+                  aria-label={`View founder ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// FREE RESOURCES SECTION
+// Light background with resource cards
+// =====================================================
+const FreeResourcesSection = () => {
+  const resources = [
+    {
+      title: "Valuation Calculator",
+      description: "Calculate your company's valuation",
+      bg: "bg-[#8B9EB0]"
+    },
+    {
+      title: "Psychometric Test",
+      description: "Assess your team's dynamics",
+      bg: "bg-[#7B8FA5]"
+    }
+  ];
+
+  return (
+    <section className="bg-[#E8EEF2] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-light text-gray-800">
             Free Resources
           </h2>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {/* Resource 1 */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 md:p-10 hover:bg-white/15 transition-all cursor-pointer group min-h-[200px] flex flex-col justify-center">
-              <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-blue-300 transition-colors">
-                Valuation Calculator
-              </h3>
-            </div>
-
-            {/* Resource 2 */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 md:p-10 hover:bg-white/15 transition-all cursor-pointer group min-h-[200px] flex flex-col justify-center">
-              <h3 className="text-xl md:text-2xl font-semibold text-white group-hover:text-blue-300 transition-colors">
-                Psychometric Test
-              </h3>
-            </div>
-          </div>
-
-          <div className="text-center md:text-right">
-            <button className="px-8 py-3 bg-white text-[#002855] font-semibold rounded-lg hover:bg-blue-50 transition-colors shadow-lg inline-flex items-center gap-2">
-              More Resources
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
-          </div>
         </div>
-      </section>
 
-      {/* END OF PART 1 */}
+        {/* Resource Cards Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          {resources.map((resource, index) => (
+            <div 
+              key={index}
+              className={`${resource.bg} rounded-lg p-12 h-64 flex items-end hover:shadow-xl transition-shadow duration-300 cursor-pointer group`}
+            >
+              <div className="text-white">
+                <h3 className="text-2xl font-medium mb-2 group-hover:translate-x-2 transition-transform duration-300">
+                  {resource.title}
+                </h3>
+                <p className="text-white/80 text-sm">
+                  {resource.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      {/* OUR STORY & PROCESS SECTION */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+        {/* More Resources Button */}
+        <div className="flex justify-end">
+          <button className="bg-white text-gray-700 px-8 py-3 rounded hover:shadow-lg transition-shadow duration-300 font-medium border border-gray-200">
+            More Resources
+          </button>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// STORY & PROCESS SECTION
+// Dark blue background with timeline/process illustration
+// =====================================================
+const StoryProcessSection = () => {
+  return (
+    <section className="bg-[#0A1E3D] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-8">
             Our Story & Process
           </h2>
-          
-          <div className="space-y-3 text-white/70 text-sm md:text-base mb-12 max-w-4xl">
-            <p>Are You a Founder ? Are You a Founder ?Are You a Founder ?Are You a Founder ? Are You a</p>
-            <p>Founder ?Are You a Founder ? Are You a Founder ? Are You a Founder ?Are You a Founder ?</p>
-            <p>Are You a Founder ?Are You a Founder ? Are You a Founder ?Are You a Founder ? Are You a</p>
-            <p>Founder ?</p>
-          </div>
+          <p className="text-gray-300 text-sm leading-relaxed max-w-4xl">
+            Founded by experienced entrepreneurs who have built, scaled, and sold businesses across 
+            multiple industries, Sareen & Company brings real-world expertise to strategic consulting. 
+            We understand the challenges founders face because we've lived them. Our proven process 
+            combines deep diagnostics, strategic planning, and hands-on implementation support to help 
+            businesses achieve breakthrough results. We don't just provide advice—we partner with you 
+            to execute and deliver measurable outcomes.
+          </p>
+        </div>
 
-          {/* Process Diagram */}
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-16">
-            <svg viewBox="0 0 1200 400" className="w-full h-auto">
-              <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{stopColor: '#60A5FA', stopOpacity: 0.3}} />
-                  <stop offset="50%" style={{stopColor: '#34D399', stopOpacity: 0.5}} />
-                  <stop offset="100%" style={{stopColor: '#60A5FA', stopOpacity: 0.3}} />
-                </linearGradient>
-                
-                <filter id="glow2">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-
-              {/* Horizontal Timeline */}
-              <line x1="100" y1="200" x2="1100" y2="200" stroke="url(#grad1)" strokeWidth="3" />
-
-              {/* Phase 1: Small Circle */}
-              <g transform="translate(200, 200)">
-                <circle cx="0" cy="0" r="60" fill="#1E40AF" opacity="0.2" filter="url(#glow2)" />
-                <circle cx="0" cy="0" r="45" fill="none" stroke="#60A5FA" strokeWidth="3" />
-                <text x="0" y="-70" textAnchor="middle" fill="white" fontSize="14" fontWeight="600">Diagnosis</text>
-                <text x="0" y="5" textAnchor="middle" fill="white" fontSize="16" fontWeight="bold">01</text>
-                
-                {/* Branches */}
-                <line x1="0" y1="-45" x2="0" y2="-90" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="32" y1="-32" x2="60" y2="-60" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="32" y1="32" x2="60" y2="60" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="0" y1="45" x2="0" y2="90" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="-32" y1="32" x2="-60" y2="60" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="-32" y1="-32" x2="-60" y2="-60" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-              </g>
-
-              {/* Phase 2: Medium Circle */}
-              <g transform="translate(500, 200)">
-                <circle cx="0" cy="0" r="80" fill="#065F46" opacity="0.2" filter="url(#glow2)" />
-                <circle cx="0" cy="0" r="60" fill="none" stroke="#34D399" strokeWidth="3" />
-                <text x="0" y="-85" textAnchor="middle" fill="white" fontSize="14" fontWeight="600">Strategy</text>
-                <text x="0" y="5" textAnchor="middle" fill="white" fontSize="18" fontWeight="bold">02</text>
-                
-                {/* Branches */}
-                <line x1="0" y1="-60" x2="0" y2="-110" stroke="#34D399" strokeWidth="2" opacity="0.5" />
-                <line x1="42" y1="-42" x2="75" y2="-75" stroke="#34D399" strokeWidth="2" opacity="0.5" />
-                <line x1="60" y1="0" x2="105" y2="0" stroke="#34D399" strokeWidth="2" opacity="0.5" />
-                <line x1="42" y1="42" x2="75" y2="75" stroke="#34D399" strokeWidth="2" opacity="0.5" />
-                <line x1="0" y1="60" x2="0" y2="110" stroke="#34D399" strokeWidth="2" opacity="0.5" />
-                <line x1="-42" y1="42" x2="-75" y2="75" stroke="#34D399" strokeWidth="2" opacity="0.5" />
-                <line x1="-60" y1="0" x2="-105" y2="0" stroke="#34D399" strokeWidth="2" opacity="0.5" />
-                <line x1="-42" y1="-42" x2="-75" y2="-75" stroke="#34D399" strokeWidth="2" opacity="0.5" />
-              </g>
-
-              {/* Phase 3: Large Circle */}
-              <g transform="translate(850, 200)">
-                <circle cx="0" cy="0" r="100" fill="#1E3A8A" opacity="0.2" filter="url(#glow2)" />
-                <circle cx="0" cy="0" r="80" fill="none" stroke="#60A5FA" strokeWidth="4" />
-                <text x="0" y="-105" textAnchor="middle" fill="white" fontSize="14" fontWeight="600">Execution</text>
-                <text x="0" y="5" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold">03</text>
-                
-                {/* Branches */}
-                <line x1="0" y1="-80" x2="0" y2="-135" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="56" y1="-56" x2="95" y2="-95" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="80" y1="0" x2="130" y2="0" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="56" y1="56" x2="95" y2="95" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="0" y1="80" x2="0" y2="135" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="-56" y1="56" x2="-95" y2="95" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="-80" y1="0" x2="-130" y2="0" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-                <line x1="-56" y1="-56" x2="-95" y2="-95" stroke="#60A5FA" strokeWidth="2" opacity="0.5" />
-              </g>
-
-              {/* Labels */}
-              <text x="600" y="380" textAnchor="middle" fill="white" fontSize="12" opacity="0.7">PROCESS</text>
+        {/* Process Timeline Illustration */}
+        <div className="relative mt-16">
+          {/* Replace with your own SVG */}
+          <div className="bg-[#132B47] rounded-lg p-8 overflow-x-auto">
+            <svg viewBox="0 0 1000 300" className="w-full h-64">
+              {/* Horizontal timeline base */}
+              <line x1="50" y1="150" x2="950" y2="150" stroke="#4A90E2" strokeWidth="2" />
               
-              {/* Sparkles */}
-              <g transform="translate(1050, 100)">
-                <path d="M 0,-6 L 0,6 M -6,0 L 6,0" stroke="#60A5FA" strokeWidth="2" opacity="0.8" />
-                <circle cx="0" cy="0" r="2" fill="#60A5FA" opacity="0.8" />
-              </g>
+              {/* Process circles - representing stages */}
+              {[150, 300, 500, 700, 850].map((x, i) => (
+                <g key={i}>
+                  {/* Vertical line */}
+                  <line x1={x} y1="130" x2={x} y2="170" stroke="#4A90E2" strokeWidth="1" />
+                  
+                  {/* Circle */}
+                  <circle 
+                    cx={x} 
+                    cy={150} 
+                    r={30 + (i === 2 ? 20 : 0)} 
+                    fill={`rgba(74, 144, 226, ${0.2 + i * 0.15})`} 
+                    stroke="#4A90E2" 
+                    strokeWidth="2" 
+                  />
+                  <circle 
+                    cx={x} 
+                    cy={150} 
+                    r={15 + (i === 2 ? 10 : 0)} 
+                    fill={`rgba(74, 144, 226, ${0.4 + i * 0.1})`} 
+                  />
+                  
+                  {/* Labels above */}
+                  <text 
+                    x={x} 
+                    y={100} 
+                    textAnchor="middle" 
+                    fill="#A0AEC0" 
+                    fontSize="12"
+                  >
+                    Stage {i + 1}
+                  </text>
+                </g>
+              ))}
               
-              <g transform="translate(150, 320)">
-                <path d="M 0,-5 L 0,5 M -5,0 L 5,0" stroke="#34D399" strokeWidth="1.5" opacity="0.6" />
-                <circle cx="0" cy="0" r="1.5" fill="#34D399" opacity="0.6" />
-              </g>
+              {/* Decorative elements */}
+              <circle cx="100" cy="80" r="3" fill="#4A90E2" opacity="0.6" />
+              <circle cx="900" cy="220" r="3" fill="#4A90E2" opacity="0.6" />
+              <circle cx="450" cy="60" r="2" fill="#4A90E2" opacity="0.4" />
+              <circle cx="750" cy="240" r="2" fill="#4A90E2" opacity="0.4" />
             </svg>
           </div>
         </div>
-      </section>
 
-      {/* BOTTOM CTA SECTION */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-12 md:p-16">
-            <h2 className="text-2xl md:text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Startup?
-            </h2>
-            <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-              Book a free consultation and discover how we can help you achieve predictable, sustainable growth.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-10 py-4 bg-white text-[#002855] font-bold rounded-lg hover:bg-blue-50 transition-colors shadow-xl">
-                Book Free Consultation
-              </button>
-              <button className="px-10 py-4 bg-transparent text-white font-bold rounded-lg border-2 border-white hover:bg-white/10 transition-colors">
-                Download Report
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
+  );
+};
 
-    </div>
+// =====================================================
+// MAIN HOMEPAGE COMPONENT - EXPORTS ALL SECTIONS
+// =====================================================
+export default function HomePage() {
+  return (
+    <main className="min-h-screen">
+      <HeroSection />
+      <ReportSection />
+      <CompanyHelpsSection />
+      <FoundersSection />
+      <FreeResourcesSection />
+      <StoryProcessSection />
+    </main>
   );
 }

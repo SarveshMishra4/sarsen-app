@@ -1,500 +1,568 @@
-"use client";
+'use client';
 
-import { useState, ChangeEvent, FormEvent } from "react";
-import Link from "next/link";
+import React, { useState } from 'react';
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  company: string;
-  phone: string;
-  service: string;
-  message: string;
-}
+// =====================================================
+// HERO SECTION COMPONENT
+// Dark blue background with contact headline
+// =====================================================
+const ContactHeroSection = () => {
+  return (
+    <section className="relative bg-[#0A1E3D] min-h-[400px] pt-20 pb-16 px-4 overflow-hidden">
+      {/* Decorative stars/dots in background */}
+      <div className="absolute top-20 right-10 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
+      <div className="absolute bottom-32 right-1/4 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
+      <div className="absolute top-40 left-20 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
 
-interface Office {
-  city: string;
-  country: string;
-  address: string;
-  phone: string;
-  email: string;
-}
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Column - Headline */}
+          <div className="space-y-6">
+            <h1 className="text-4xl md:text-5xl text-white font-light mb-4">
+              Get in Touch
+            </h1>
+            <p className="text-xl text-gray-300 font-light leading-relaxed">
+              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            </p>
+          </div>
 
-interface FAQ {
-  question: string;
-  answer: string;
-}
+          {/* Right Column - Decorative Diagram Space */}
+          <div className="relative h-64 md:h-80 flex items-center justify-center">
+            <svg viewBox="0 0 400 300" className="w-full h-full max-w-md ml-auto">
+              {/* Connection lines diagram */}
+              <g opacity="0.6">
+                {/* Central node */}
+                <circle cx="200" cy="150" r="30" stroke="#4A90E2" strokeWidth="2" fill="#0A1E3D" />
+                <circle cx="200" cy="150" r="20" stroke="#4A90E2" strokeWidth="1" fill="none" />
+                
+                {/* Connecting lines to outer nodes */}
+                <line x1="200" y1="150" x2="100" y2="80" stroke="#4A90E2" strokeWidth="1.5" strokeDasharray="3,3" />
+                <line x1="200" y1="150" x2="300" y2="80" stroke="#4A90E2" strokeWidth="1.5" strokeDasharray="3,3" />
+                <line x1="200" y1="150" x2="100" y2="220" stroke="#4A90E2" strokeWidth="1.5" strokeDasharray="3,3" />
+                <line x1="200" y1="150" x2="300" y2="220" stroke="#4A90E2" strokeWidth="1.5" strokeDasharray="3,3" />
+                
+                {/* Outer nodes */}
+                <circle cx="100" cy="80" r="15" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" />
+                <circle cx="300" cy="80" r="15" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" />
+                <circle cx="100" cy="220" r="15" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" />
+                <circle cx="300" cy="220" r="15" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" />
+                
+                {/* Small decorative dots */}
+                <circle cx="150" cy="100" r="3" fill="#4A90E2" />
+                <circle cx="250" cy="100" r="3" fill="#4A90E2" />
+                <circle cx="150" cy="200" r="3" fill="#4A90E2" />
+                <circle cx="250" cy="200" r="3" fill="#4A90E2" />
+              </g>
+            </svg>
+          </div>
 
-export default function ContactPage() {
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    company: "",
-    phone: "",
-    service: "",
-    message: ""
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// CONTACT FORM & INFO SECTION
+// Light background with form and contact details
+// =====================================================
+const ContactFormSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    message: ''
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const services = [
-    "Digital Transformation",
-    "Market Expansion",
-    "Operational Excellence",
-    "Strategic Planning",
-    "Mergers & Acquisitions",
-    "Organizational Design",
-    "Other"
-  ];
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const { name, value, type } = e.target;
+  
+  setFormData(prev => ({
+    ...prev,
+    [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+  }));
+};
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleSubmit = () => {
+    // Handle form submission logic here
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 3000);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        company: "",
-        phone: "",
-        service: "",
-        message: ""
-      });
-    }, 1500);
-  };
+  return (
+    <section className="bg-[#E8EEF2] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12">
+          
+          {/* Left Column - Contact Form */}
+          <div className="bg-white rounded-lg shadow-lg p-8 md:p-10">
+            <h2 className="text-3xl font-light text-gray-800 mb-6">
+              Send us a Message
+            </h2>
+            
+            <div className="space-y-6">
+              {/* Name Field */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  placeholder="John Doe"
+                />
+              </div>
 
-  const globalOffices: Office[] = [
-    {
-      city: "New York",
-      country: "United States",
-      address: "123 Park Avenue, Suite 1000",
-      phone: "+1 (212) 555-0123",
-      email: "nyc@sarsen.com"
-    },
-    {
-      city: "London",
-      country: "United Kingdom",
-      address: "25 Berkeley Square, Mayfair",
-      phone: "+44 20 7123 4567",
-      email: "london@sarsen.com"
-    },
-    {
-      city: "Singapore",
-      country: "Singapore",
-      address: "1 Raffles Place, #48-00",
-      phone: "+65 6589 1234",
-      email: "singapore@sarsen.com"
-    },
-    {
-      city: "Sydney",
-      country: "Australia",
-      address: "1 Macquarie Place, Circular Quay",
-      phone: "+61 2 9256 7890",
-      email: "sydney@sarsen.com"
-    }
-  ];
+              {/* Email Field */}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  placeholder="john@example.com"
+                />
+              </div>
 
-  const faqs: FAQ[] = [
+              {/* Company Field */}
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  placeholder="Your Company"
+                />
+              </div>
+
+              {/* Phone Field */}
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
+                  placeholder="+1 (555) 000-0000"
+                />
+              </div>
+
+              {/* Message Field */}
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  Message *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="5"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none"
+                  placeholder="Tell us about your needs..."
+                ></textarea>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                onClick={handleSubmit}
+                className="w-full bg-[#1E5A8E] text-white py-4 px-6 rounded-lg hover:bg-[#2B7AB8] transition-colors duration-300 font-medium text-lg"
+              >
+                Send Message
+              </button>
+
+              {/* Success Message */}
+              {submitted && (
+                <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
+                  Thank you! Your message has been sent successfully.
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Right Column - Contact Information */}
+          <div className="space-y-8">
+            
+            {/* Contact Details Card */}
+            <div className="bg-[#8B9EB0] rounded-lg p-8 text-white">
+              <h3 className="text-2xl font-light mb-6">
+                Contact Information
+              </h3>
+              
+              <div className="space-y-6">
+                {/* Email */}
+                <div className="flex items-start space-x-4">
+                  <div className="mt-1">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-1">Email</p>
+                    <a href="mailto:contact@sareen.com" className="text-white/90 hover:text-white transition-colors">
+                      contact@sareen.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="flex items-start space-x-4">
+                  <div className="mt-1">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-1">Phone</p>
+                    <a href="tel:+15550000000" className="text-white/90 hover:text-white transition-colors">
+                      +1 (555) 000-0000
+                    </a>
+                  </div>
+                </div>
+
+                {/* Address */}
+                <div className="flex items-start space-x-4">
+                  <div className="mt-1">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-1">Office Address</p>
+                    <p className="text-white/90">
+                      123 Business Street<br />
+                      Suite 100<br />
+                      City, State 12345
+                    </p>
+                  </div>
+                </div>
+
+                {/* Business Hours */}
+                <div className="flex items-start space-x-4">
+                  <div className="mt-1">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-1">Business Hours</p>
+                    <p className="text-white/90">
+                      Monday - Friday: 9:00 AM - 6:00 PM<br />
+                      Saturday: 10:00 AM - 4:00 PM<br />
+                      Sunday: Closed
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Diagram Space - Reserved for custom illustration */}
+            <div className="bg-white rounded-lg p-8 shadow-md h-64 flex items-center justify-center">
+              <svg viewBox="0 0 300 200" className="w-full h-full">
+                {/* Flowchart style diagram */}
+                <g opacity="0.7">
+                  {/* Top box */}
+                  <rect x="100" y="20" width="100" height="40" rx="5" stroke="#4A90E2" strokeWidth="2" fill="none" />
+                  <text x="150" y="45" textAnchor="middle" fill="#4A90E2" fontSize="12">Contact</text>
+                  
+                  {/* Arrow down */}
+                  <line x1="150" y1="60" x2="150" y2="85" stroke="#4A90E2" strokeWidth="2" />
+                  <polygon points="150,90 145,80 155,80" fill="#4A90E2" />
+                  
+                  {/* Middle box */}
+                  <rect x="100" y="95" width="100" height="40" rx="5" stroke="#4A90E2" strokeWidth="2" fill="none" />
+                  <text x="150" y="120" textAnchor="middle" fill="#4A90E2" fontSize="12">Review</text>
+                  
+                  {/* Arrow down */}
+                  <line x1="150" y1="135" x2="150" y2="160" stroke="#4A90E2" strokeWidth="2" />
+                  <polygon points="150,165 145,155 155,155" fill="#4A90E2" />
+                  
+                  {/* Bottom box */}
+                  <rect x="100" y="170" width="100" height="40" rx="5" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" fillOpacity="0.1" />
+                  <text x="150" y="195" textAnchor="middle" fill="#4A90E2" fontSize="12">Response</text>
+                </g>
+              </svg>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// FAQ SECTION
+// Dark blue background with accordion-style questions
+// =====================================================
+const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
     {
-      question: "What is your typical engagement process?",
-      answer: "We begin with a discovery session to understand your challenges, followed by a proposal outlining our approach. Once engaged, we follow our structured process of assessment, strategy design, implementation, and ongoing support."
+      question: "What services does Sareen & Company offer?",
+      answer: "Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder."
     },
     {
-      question: "How long does a typical engagement last?",
-      answer: "Engagements vary based on scope and complexity. Initial strategy projects typically range from 3-6 months, while transformation programs can extend from 6-18 months. We offer flexible engagement models to suit your needs."
+      question: "How long does the consultation process take?",
+      answer: "Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder."
     },
     {
       question: "What industries do you specialize in?",
-      answer: "We have experience across 40+ industries including technology, finance, healthcare, manufacturing, retail, and professional services. Our approach is tailored to each industry's unique challenges and opportunities."
+      answer: "Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder."
     },
     {
-      question: "Do you offer ongoing support after project completion?",
-      answer: "Yes, we offer various ongoing support models including retainer arrangements, periodic reviews, and implementation support to ensure long-term success and continuous improvement."
+      question: "How can I schedule a consultation?",
+      answer: "Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder."
+    },
+    {
+      question: "Do you offer remote consultations?",
+      answer: "Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder."
     }
   ];
 
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      
-      {/* Hero Section */}
-      <section className="bg-[#002855] text-white py-12 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">
-              Contact Us
-            </h1>
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-              Ready to transform your strategy? Connect with our experts for a 
-              complimentary consultation to explore how we can help achieve your business objectives.
-            </p>
-          </div>
+    <section className="bg-[#0A1E3D] py-16 px-4">
+      <div className="max-w-4xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-gray-300 text-sm">
+            Find answers to common questions about our services
+          </p>
         </div>
-      </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            
-            {/* Left Column - Contact Form */}
-            <div>
-              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Send Us a Message
-                </h2>
-                
-                {submitSuccess ? (
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Message Sent Successfully!</h3>
-                    <p className="text-gray-600 mb-4">
-                      Thank you for contacting Sarsen & Company. Our team will review your 
-                      inquiry and respond within 24 hours.
-                    </p>
-                    <button
-                      onClick={() => setSubmitSuccess(false)}
-                      className="px-6 py-2 bg-[#002855] text-white font-semibold rounded-md hover:bg-blue-900 transition-colors"
-                    >
-                      Send Another Message
-                    </button>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          First Name *
-                        </label>
-                        <input
-                          type="text"
-                          name="firstName"
-                          value={formData.firstName}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002855] focus:border-transparent"
-                          placeholder="John"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Last Name *
-                        </label>
-                        <input
-                          type="text"
-                          name="lastName"
-                          value={formData.lastName}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002855] focus:border-transparent"
-                          placeholder="Doe"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Email Address *
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002855] focus:border-transparent"
-                          placeholder="john@company.com"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002855] focus:border-transparent"
-                          placeholder="+1 (555) 123-4567"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mb-6">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Company *
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002855] focus:border-transparent"
-                        placeholder="Your Company Name"
-                      />
-                    </div>
-
-                    <div className="mb-6">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Service Interest
-                      </label>
-                      <select
-                        name="service"
-                        value={formData.service}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002855] focus:border-transparent"
-                      >
-                        <option value="">Select a service</option>
-                        {services.map((service, index) => (
-                          <option key={index} value={service}>{service}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="mb-8">
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Message *
-                      </label>
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={6}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#002855] focus:border-transparent"
-                        placeholder="Tell us about your challenges and what you hope to achieve..."
-                      ></textarea>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={`w-full py-4 px-6 bg-[#002855] text-white font-semibold rounded-md hover:bg-blue-900 transition-colors ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
-                    >
-                      {isSubmitting ? (
-                        <span className="flex items-center justify-center">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Sending Message...
-                        </span>
-                      ) : (
-                        'Send Message'
-                      )}
-                    </button>
-                  </form>
-                )}
-              </div>
-
-              {/* Response Time Promise */}
-              <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Response Time Promise</h3>
-                    <p className="text-sm text-gray-600">
-                      We commit to responding to all inquiries within 24 hours during business days.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Contact Information */}
-            <div>
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Global Headquarters</h2>
-                <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                        <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-gray-900 mb-1">New York Headquarters</h3>
-                      <p className="text-gray-600">123 Park Avenue, Suite 1000</p>
-                      <p className="text-gray-600">New York, NY 10017</p>
-                      <p className="text-gray-600">United States</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <span className="text-gray-900 font-medium">+1 (212) 555-0123</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      <span className="text-gray-900 font-medium">info@sarsen.com</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span className="text-gray-900 font-medium">Mon-Fri: 9:00 AM - 6:00 PM EST</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Global Offices */}
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Global Offices</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {globalOffices.map((office, index) => (
-                    <div key={index} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                      <h3 className="font-bold text-gray-900 mb-1">{office.city}</h3>
-                      <p className="text-sm text-gray-600 mb-2">{office.country}</p>
-                      <p className="text-xs text-gray-500 mb-1">{office.address}</p>
-                      <p className="text-xs text-gray-500">{office.phone}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Contact Methods */}
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Other Ways to Connect</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <a href="#" className="bg-gray-50 hover:bg-gray-100 rounded-lg p-4 border border-gray-200 transition-colors group">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                        <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-900">LinkedIn</div>
-                        <div className="text-sm text-gray-600">Follow our insights</div>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="#" className="bg-gray-50 hover:bg-gray-100 rounded-lg p-4 border border-gray-200 transition-colors group">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                        <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <div className="font-semibold text-gray-900">Twitter</div>
-                        <div className="text-sm text-gray-600">Latest updates</div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Find answers to common questions about working with Sarsen & Company.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
-                    <p className="text-gray-600">{faq.answer}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-8 text-center">
-              <p className="text-gray-600 mb-4">
-                Still have questions? We're here to help.
-              </p>
-              <Link 
-                href="#contact-form" 
-                className="inline-flex items-center gap-2 text-[#002855] font-semibold hover:text-blue-900 transition-colors"
+        {/* FAQ Accordion */}
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <div 
+              key={index}
+              className="bg-[#132B47] rounded-lg overflow-hidden transition-all duration-300"
+            >
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[#1a3a5c] transition-colors"
               >
-                <span>Contact our team directly</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <span className="text-white font-medium pr-4">
+                  {faq.question}
+                </span>
+                <svg 
+                  className={`w-5 h-5 text-blue-400 transition-transform duration-300 flex-shrink-0 ${
+                    openIndex === index ? 'transform rotate-180' : ''
+                  }`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </Link>
+              </button>
+              
+              <div 
+                className={`overflow-hidden transition-all duration-300 ${
+                  openIndex === index ? 'max-h-96' : 'max-h-0'
+                }`}
+              >
+                <div className="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
+                  {faq.answer}
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="bg-gradient-to-r from-[#002855] to-blue-900 rounded-2xl p-8 md:p-12 text-center text-white">
-            <h2 className="text-2xl md:text-4xl font-bold mb-4">
-              Schedule a Consultation
-            </h2>
-            <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-              Ready to discuss your strategic challenges? Book a complimentary 
-              30-minute consultation with one of our senior partners.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="#" 
-                className="px-8 py-3 bg-white text-[#002855] font-semibold rounded-md hover:bg-blue-50 transition-colors shadow"
-              >
-                Schedule Now
-              </Link>
-              <a 
-                href="tel:+12125550123" 
-                className="px-8 py-3 border border-white text-white font-semibold rounded-md hover:bg-white/10 transition-colors"
-              >
-                Call Us: +1 (212) 555-0123
-              </a>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// LOCATION MAP SECTION
+// Light background with map placeholder and directions
+// =====================================================
+const LocationMapSection = () => {
+  return (
+    <section className="bg-[#8B9EB0] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Column - Map Placeholder */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden h-96">
+            {/* Reserved space for map integration */}
+            <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center relative">
+              {/* Map placeholder with location marker */}
+              <svg viewBox="0 0 400 400" className="w-full h-full opacity-30">
+                {/* Grid lines to simulate map */}
+                {[0, 100, 200, 300, 400].map((pos, i) => (
+                  <g key={i}>
+                    <line x1={pos} y1="0" x2={pos} y2="400" stroke="#999" strokeWidth="1" />
+                    <line x1="0" y1={pos} x2="400" y2={pos} stroke="#999" strokeWidth="1" />
+                  </g>
+                ))}
+                
+                {/* Location marker */}
+                <g transform="translate(200, 180)">
+                  <path 
+                    d="M0,-40 Q-15,-40 -25,-28 Q-30,-20 -30,0 Q-30,20 0,50 Q30,20 30,0 Q30,-20 25,-28 Q15,-40 0,-40 Z" 
+                    fill="#1E5A8E" 
+                    opacity="0.8"
+                  />
+                  <circle cx="0" cy="-15" r="10" fill="white" />
+                </g>
+              </svg>
+              
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <svg className="w-16 h-16 mx-auto mb-2 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <p className="text-gray-500 font-medium">Map Integration</p>
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Right Column - Directions and Info */}
+          <div className="text-white space-y-6">
+            <h2 className="text-3xl md:text-4xl font-light mb-6">
+              Visit Our Office
+            </h2>
+            
+            <div className="space-y-4 text-sm leading-relaxed">
+              <p className="text-white/90">
+                <strong className="text-white block mb-1">Address:</strong>
+                123 Business Street, Suite 100<br />
+                City, State 12345
+              </p>
+              
+              <p className="text-white/90">
+                <strong className="text-white block mb-1">Directions:</strong>
+                Our office is conveniently located in the heart of the business district, 
+                easily accessible by public transportation or car. Free parking available 
+                in the building garage.
+              </p>
+              
+              <p className="text-white/90">
+                <strong className="text-white block mb-1">Nearby Landmarks:</strong>
+                • Central Business Plaza (2 blocks east)<br />
+                • Metro Station (5 minute walk)<br />
+                • City Mall (0.5 miles north)
+              </p>
+            </div>
+
+            <button className="mt-6 bg-white text-[#0A1E3D] px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium">
+              Get Directions
+            </button>
+          </div>
+
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// CTA SECTION
+// Dark blue background with call-to-action
+// =====================================================
+const CTASection = () => {
+  return (
+    <section className="bg-[#0A1E3D] py-16 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        
+        <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
+          Ready to Get Started?
+        </h2>
+        
+        <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+          Schedule a consultation with our team to discuss how we can help your business grow
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button className="bg-[#1E5A8E] text-white px-8 py-4 rounded-lg hover:bg-[#2B7AB8] transition-colors font-medium text-lg">
+            Schedule Consultation
+          </button>
+          <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-[#0A1E3D] transition-colors font-medium text-lg">
+            Download Brochure
+          </button>
+        </div>
+
+        {/* Decorative diagram space */}
+        <div className="mt-12">
+          <svg viewBox="0 0 600 100" className="w-full h-24 opacity-40">
+            {/* Simple connection flow diagram */}
+            <g>
+              {/* Left circle */}
+              <circle cx="100" cy="50" r="25" stroke="#4A90E2" strokeWidth="2" fill="none" />
+              <circle cx="100" cy="50" r="15" stroke="#4A90E2" strokeWidth="1" fill="none" />
+              
+              {/* Connecting line */}
+              <line x1="125" y1="50" x2="225" y2="50" stroke="#4A90E2" strokeWidth="2" strokeDasharray="5,5" />
+              <polygon points="230,50 220,45 220,55" fill="#4A90E2" />
+              
+              {/* Middle circle */}
+              <circle cx="300" cy="50" r="30" stroke="#4A90E2" strokeWidth="2" fill="none" />
+              <circle cx="300" cy="50" r="18" stroke="#4A90E2" strokeWidth="1" fill="none" />
+              
+              {/* Connecting line */}
+              <line x1="330" y1="50" x2="445" y2="50" stroke="#4A90E2" strokeWidth="2" strokeDasharray="5,5" />
+              <polygon points="450,50 440,45 440,55" fill="#4A90E2" />
+              
+              {/* Right circle */}
+              <circle cx="500" cy="50" r="25" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" fillOpacity="0.3" />
+              <circle cx="500" cy="50" r="15" stroke="#4A90E2" strokeWidth="1" fill="none" />
+            </g>
+          </svg>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// MAIN CONTACT PAGE COMPONENT - EXPORTS ALL SECTIONS
+// =====================================================
+export default function ContactPage() {
+  return (
+    <main className="min-h-screen">
+      <ContactHeroSection />
+      <ContactFormSection />
+      <FAQSection />
+      <LocationMapSection />
+      <CTASection />
+    </main>
   );
 }

@@ -1,334 +1,472 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState } from 'react';
 
-export default function AboutPage() {
-  const [activeValue, setActiveValue] = useState(0);
+// =====================================================
+// HERO SECTION COMPONENT
+// Dark blue background with company tagline
+// =====================================================
+const AboutHeroSection = () => {
+  return (
+    <section className="relative bg-[#0A1E3D] min-h-[400px] pt-20 pb-16 px-4 overflow-hidden">
+      {/* Decorative stars/dots in background */}
+      <div className="absolute top-20 right-10 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
+      <div className="absolute bottom-32 right-1/4 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
+      <div className="absolute top-40 left-20 w-1 h-1 bg-blue-300 rounded-full opacity-60"></div>
 
+      <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl">
+          <h1 className="text-4xl md:text-5xl text-white font-light mb-6">
+            About Sareen & Company
+          </h1>
+          <p className="text-xl text-gray-300 font-light">
+            Empowering founders with strategic insights and solutions for sustainable growth
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// OUR STORY SECTION
+// Light background with story content and circular illustration
+// =====================================================
+const OurStorySection = () => {
+  return (
+    <section className="bg-[#E8EEF2] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Column - Story Text */}
+          <div className="space-y-6">
+            <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-6">
+              Our Story
+            </h2>
+            <div className="space-y-4 text-gray-700 text-sm leading-relaxed">
+              <p>
+                Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+                Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+                Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder.
+              </p>
+              <p>
+                Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+                Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder.
+              </p>
+              <p>
+                Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+                Are You a Founder / Are You a Founder / Are You a Founder.
+              </p>
+            </div>
+          </div>
+
+          {/* Right Column - Circular Illustration */}
+          <div className="relative h-96 flex items-center justify-center">
+            <svg viewBox="0 0 300 300" className="w-full h-full max-w-md">
+              {/* Outer circle */}
+              <circle cx="150" cy="150" r="140" stroke="#4A90E2" strokeWidth="2" fill="none" strokeDasharray="5,5" opacity="0.3" />
+              
+              {/* Main segmented circle */}
+              <circle cx="150" cy="150" r="120" stroke="#1E5A8E" strokeWidth="3" fill="none" strokeDasharray="20,5" />
+              
+              {/* Inner circle */}
+              <circle cx="150" cy="150" r="100" stroke="#4A90E2" strokeWidth="2" fill="none" />
+              
+              {/* Center circle */}
+              <circle cx="150" cy="150" r="80" fill="#1E5A8E" opacity="0.1" />
+              <circle cx="150" cy="150" r="60" fill="#1E5A8E" opacity="0.2" />
+              
+              {/* Decorative lines radiating from center */}
+              {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
+                const rad = (angle * Math.PI) / 180;
+                const x1 = 150 + 65 * Math.cos(rad);
+                const y1 = 150 + 65 * Math.sin(rad);
+                const x2 = 150 + 115 * Math.cos(rad);
+                const y2 = 150 + 115 * Math.sin(rad);
+                return (
+                  <line 
+                    key={i}
+                    x1={x1} 
+                    y1={y1} 
+                    x2={x2} 
+                    y2={y2} 
+                    stroke="#4A90E2" 
+                    strokeWidth="1" 
+                    opacity="0.5"
+                  />
+                );
+              })}
+              
+              {/* Small dots around the circle */}
+              {[0, 60, 120, 180, 240, 300].map((angle, i) => {
+                const rad = (angle * Math.PI) / 180;
+                const x = 150 + 130 * Math.cos(rad);
+                const y = 150 + 130 * Math.sin(rad);
+                return (
+                  <circle 
+                    key={i}
+                    cx={x} 
+                    cy={y} 
+                    r="4" 
+                    fill="#4A90E2"
+                  />
+                );
+              })}
+            </svg>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// OUR PROCESS SECTION
+// Dark blue background with timeline visualization
+// =====================================================
+const OurProcessSection = () => {
+  return (
+    <section className="bg-[#0A1E3D] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-8">
+            Our Story & Process
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed max-w-4xl">
+            Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+            Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+            Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder.
+          </p>
+        </div>
+
+        {/* Process Timeline with Overlapping Circles */}
+        <div className="relative mt-16 overflow-x-auto">
+          <div className="bg-[#132B47] rounded-lg p-8 min-w-[900px]">
+            <svg viewBox="0 0 1000 300" className="w-full h-64">
+              {/* Horizontal baseline */}
+              <line x1="20" y1="150" x2="980" y2="150" stroke="#2C5282" strokeWidth="2" />
+              
+              {/* Week markers and labels */}
+              {[
+                { x: 50, week: 1, size: 40, opacity: 0.3, color: '#4A90E2' },
+                { x: 150, week: 2, size: 50, opacity: 0.4, color: '#5BA3E8' },
+                { x: 250, week: 3, size: 60, opacity: 0.5, color: '#6CB4EE' },
+                { x: 350, week: 4, size: 80, opacity: 0.6, color: '#7EC8F5' },
+                { x: 500, week: 5, size: 100, opacity: 0.7, color: '#90D5F7' },
+                { x: 650, week: 6, size: 90, opacity: 0.65, color: '#7EC8F5' },
+                { x: 800, week: 7, size: 70, opacity: 0.55, color: '#6CB4EE' },
+                { x: 920, week: 8, size: 50, opacity: 0.5, color: '#5BA3E8', isLaunch: true }
+              ].map((item, i) => (
+                <g key={i}>
+                  {/* Vertical line */}
+                  <line 
+                    x1={item.x} 
+                    y1={150 - item.size/2 - 10} 
+                    x2={item.x} 
+                    y2={150 + item.size/2 + 10} 
+                    stroke="#4A90E2" 
+                    strokeWidth="1" 
+                    opacity="0.3"
+                  />
+                  
+                  {/* Overlapping circles */}
+                  <circle 
+                    cx={item.x} 
+                    cy={150} 
+                    r={item.size} 
+                    fill={item.color} 
+                    opacity={item.opacity * 0.3}
+                  />
+                  <circle 
+                    cx={item.x} 
+                    cy={150} 
+                    r={item.size * 0.7} 
+                    fill={item.color} 
+                    opacity={item.opacity * 0.5}
+                  />
+                  <circle 
+                    cx={item.x} 
+                    cy={150} 
+                    r={item.size * 0.4} 
+                    fill={item.color} 
+                    opacity={item.opacity}
+                  />
+                  
+                  {/* Week label */}
+                  <text 
+                    x={item.x} 
+                    y={item.isLaunch ? 70 : 250} 
+                    textAnchor="middle" 
+                    fill="#A0AEC0" 
+                    fontSize="11"
+                    fontWeight="500"
+                  >
+                    {item.isLaunch ? 'LAUNCH' : `WEEK ${item.week}`}
+                  </text>
+                  
+                  {/* Test labels */}
+                  <text 
+                    x={item.x} 
+                    y={item.isLaunch ? 85 : 235} 
+                    textAnchor="middle" 
+                    fill="#718096" 
+                    fontSize="9"
+                  >
+                    TEST {i * 2 + 1}
+                  </text>
+                  <text 
+                    x={item.x} 
+                    y={item.isLaunch ? 97 : 223} 
+                    textAnchor="middle" 
+                    fill="#718096" 
+                    fontSize="9"
+                  >
+                    TEST {i * 2 + 2}
+                  </text>
+                </g>
+              ))}
+              
+              {/* Decorative elements */}
+              <circle cx="100" cy="50" r="2" fill="#4A90E2" opacity="0.4" />
+              <circle cx="700" cy="270" r="2" fill="#4A90E2" opacity="0.4" />
+              <circle cx="450" cy="40" r="1.5" fill="#4A90E2" opacity="0.3" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// MISSION & VISION SECTION
+// Light gray background with two columns
+// =====================================================
+const MissionVisionSection = () => {
+  return (
+    <section className="bg-[#8B9EB0] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12">
+          
+          {/* Mission */}
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
+              Our Mission
+            </h2>
+            <p className="text-white text-sm leading-relaxed">
+              Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+              Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+              Are You a Founder / Are You a Founder.
+            </p>
+          </div>
+
+          {/* Vision */}
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
+              Our Vision
+            </h2>
+            <p className="text-white text-sm leading-relaxed">
+              Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+              Are You a Founder / Are You a Founder / Are You a Founder / Are You a Founder / 
+              Are You a Founder / Are You a Founder.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// OUR VALUES SECTION
+// Dark blue background with value cards
+// =====================================================
+const OurValuesSection = () => {
   const values = [
     {
+      title: "Innovation",
+      description: "We continuously seek new and better ways to solve problems and create value for our clients."
+    },
+    {
       title: "Integrity",
-      description: "We believe in transparency, honesty, and ethical conduct in all our engagements.",
-      icon: "🔒"
+      description: "We operate with transparency and honesty in all our relationships and business dealings."
     },
     {
       title: "Excellence",
-      description: "We strive for the highest standards in our work, delivering exceptional value to our clients.",
-      icon: "⭐"
+      description: "We are committed to delivering the highest quality results and exceeding expectations."
     },
     {
       title: "Collaboration",
-      description: "We work as partners with our clients, fostering open communication and shared success.",
-      icon: "🤝"
-    },
-    {
-      title: "Innovation",
-      description: "We embrace new ideas and approaches to solve complex business challenges.",
-      icon: "💡"
-    }
-  ];
-
-  const leadershipTeam = [
-    {
-      name: "Sarah Chen",
-      role: "CEO & Founder",
-      bio: "20+ years in strategic consulting with Fortune 500 companies. MBA from Harvard Business School.",
-      image: "/team/sarah.jpg"
-    },
-    {
-      name: "Michael Rodriguez",
-      role: "Chief Strategy Officer",
-      bio: "Former McKinsey partner with expertise in digital transformation and market expansion.",
-      image: "/team/michael.jpg"
-    },
-    {
-      name: "Priya Sharma",
-      role: "Head of Operations",
-      bio: "Operational excellence specialist with experience across manufacturing and service industries.",
-      image: "/team/priya.jpg"
-    },
-    {
-      name: "James Wilson",
-      role: "Director of Client Success",
-      bio: "15 years in client relationship management with focus on long-term partnership development.",
-      image: "/team/james.jpg"
-    }
-  ];
-
-  const timelineEvents = [
-    {
-      year: "2008",
-      title: "Foundation",
-      description: "Sarsen & Company was founded with a vision to redefine strategic consulting."
-    },
-    {
-      year: "2012",
-      title: "Global Expansion",
-      description: "Opened first international offices in London and Singapore."
-    },
-    {
-      year: "2016",
-      title: "Digital Practice",
-      description: "Established dedicated digital transformation practice."
-    },
-    {
-      year: "2020",
-      title: "Industry Recognition",
-      description: "Named among top 10 strategic consulting firms by Business Today."
-    },
-    {
-      year: "2024",
-      title: "Present Day",
-      description: "Serving 200+ clients across 40+ industries worldwide."
+      description: "We believe in the power of working together to achieve extraordinary outcomes."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      
-      {/* Hero Section */}
-      <section className="bg-[#002855] text-white py-12 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-5xl font-bold mb-6">
-              About Sarsen & Company
-            </h1>
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-8">
-              We are a global strategy consulting firm dedicated to helping organizations 
-              navigate complexity, seize opportunities, and achieve sustainable growth.
-            </p>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-              <span className="text-sm">Since 2008</span>
-            </div>
-          </div>
+    <section className="bg-[#0A1E3D] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-8">
+            Our Values
+          </h2>
         </div>
-      </section>
 
-      {/* Mission & Vision */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-              <div className="text-4xl mb-4">🎯</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
-              <p className="text-gray-600">
-                To empower organizations with strategic clarity and execution excellence, 
-                transforming their vision into measurable, sustainable results that create 
-                lasting value for all stakeholders.
-              </p>
-            </div>
-            
-            <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
-              <div className="text-4xl mb-4">👁️</div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h2>
-              <p className="text-gray-600">
-                To be the world's most trusted partner for strategic transformation, 
-                recognized for our integrity, innovation, and unwavering commitment 
-                to client success in an ever-evolving global landscape.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Story */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Our Story</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              From humble beginnings to global recognition, our journey is defined by 
-              our commitment to excellence and client success.
-            </p>
-          </div>
-
-          {/* Timeline */}
-          <div className="relative max-w-4xl mx-auto">
-            {/* Timeline line */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-300"></div>
-            
-            <div className="space-y-8 md:space-y-0">
-              {timelineEvents.map((event, index) => (
-                <div key={index} className={`flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} gap-6`}>
-                  <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-12 text-right" : "md:pl-12"}`}>
-                    <div className={`bg-white rounded-lg p-6 border border-gray-200 shadow-sm ${index % 2 === 0 ? "md:mr-8" : "md:ml-8"}`}>
-                      <div className="text-sm text-[#002855] font-semibold mb-2">{event.year}</div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-2">{event.title}</h3>
-                      <p className="text-gray-600 text-sm">{event.description}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="relative">
-                    <div className="w-8 h-8 bg-white border-2 border-[#002855] rounded-full flex items-center justify-center z-10 relative">
-                      <div className="w-3 h-3 bg-[#002855] rounded-full"></div>
-                    </div>
-                    {index < timelineEvents.length - 1 && (
-                      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-0.5 h-6 bg-gray-300 md:hidden"></div>
-                    )}
-                  </div>
-                  
-                  <div className="md:w-1/2"></div>
+        {/* Values Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map((value, index) => (
+            <div 
+              key={index}
+              className="bg-[#132B47] rounded-lg p-6 hover:bg-[#1a3a5c] transition-colors duration-300"
+            >
+              <div className="mb-4">
+                <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full bg-blue-500/40"></div>
                 </div>
+              </div>
+              <h3 className="text-xl text-white font-medium mb-3">
+                {value.title}
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                {value.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// OUR TEAM SECTION
+// Light background with team member cards organized by role
+// =====================================================
+const OurTeamSection = () => {
+  const teamSections = [
+    {
+      title: "Leadership Team",
+      members: [
+        { name: "Komal Shah", role: "CEO & Founder", image: "/team/komal.jpg", linkedin: "#" },
+        { name: "John Doe", role: "Chief Technology Officer", image: "/team/john.jpg", linkedin: "#" },
+        { name: "Jane Smith", role: "Chief Operating Officer", image: "/team/jane.jpg", linkedin: "#" }
+      ]
+    },
+    {
+      title: "Advisory Board",
+      members: [
+        { name: "Michael Chen", role: "Strategic Advisor", image: "/team/michael.jpg", linkedin: "#" },
+        { name: "Sarah Williams", role: "Financial Advisor", image: "/team/sarah.jpg", linkedin: "#" },
+        { name: "David Brown", role: "Technology Advisor", image: "/team/david.jpg", linkedin: "#" }
+      ]
+    },
+    {
+      title: "Core Team",
+      members: [
+        { name: "Emily Davis", role: "Senior Consultant", image: "/team/emily.jpg", linkedin: "#" },
+        { name: "Robert Wilson", role: "Business Analyst", image: "/team/robert.jpg", linkedin: "#" },
+        { name: "Lisa Anderson", role: "Marketing Lead", image: "/team/lisa.jpg", linkedin: "#" },
+        { name: "James Taylor", role: "Product Manager", image: "/team/james.jpg", linkedin: "#" }
+      ]
+    }
+  ];
+
+  return (
+    <section className="bg-[#E8EEF2] py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-4">
+            Our Team
+          </h2>
+          <p className="text-gray-600 text-sm max-w-2xl mx-auto">
+            Meet the talented individuals who make our mission possible
+          </p>
+        </div>
+
+        {/* Team Sections */}
+        {teamSections.map((section, sectionIndex) => (
+          <div key={sectionIndex} className="mb-16 last:mb-0">
+            
+            {/* Section Title */}
+            <h3 className="text-2xl font-light text-gray-800 mb-8 pb-4 border-b-2 border-[#8B9EB0]">
+              {section.title}
+            </h3>
+
+            {/* Team Members Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {section.members.map((member, memberIndex) => (
+                <a
+                  key={memberIndex}
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                    
+                    {/* Member Photo */}
+                    <div className="relative h-64 bg-gradient-to-br from-gray-300 to-gray-500 overflow-hidden">
+                      {/* Placeholder - Replace with actual images */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <svg className="w-24 h-24 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                      </div>
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-blue-900/0 group-hover:bg-blue-900/20 transition-colors duration-300"></div>
+                    </div>
+
+                    {/* Member Info */}
+                    <div className="p-6">
+                      <h4 className="text-lg font-semibold text-gray-800 mb-1 group-hover:text-blue-600 transition-colors">
+                        {member.name}
+                      </h4>
+                      <p className="text-sm text-gray-600">
+                        {member.role}
+                      </p>
+                      
+                      {/* LinkedIn Icon */}
+                      <div className="mt-4 flex items-center text-blue-600 text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        View Profile
+                      </div>
+                    </div>
+
+                  </div>
+                </a>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Our Values */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              These core principles guide everything we do and define who we are as an organization.
-            </p>
           </div>
+        ))}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <div 
-                key={index}
-                className={`bg-gray-50 rounded-xl p-6 border-2 transition-all duration-300 cursor-pointer ${
-                  activeValue === index ? "border-[#002855] bg-white shadow" : "border-gray-200 hover:border-gray-300"
-                }`}
-                onMouseEnter={() => setActiveValue(index)}
-                onClick={() => setActiveValue(index)}
-              >
-                <div className="text-3xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 text-sm">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
+  );
+};
 
-      {/* Leadership Team */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Leadership Team</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Meet the experienced professionals who guide our firm and partner with our clients.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {leadershipTeam.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-                {/* Profile Image Placeholder */}
-                <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-[#002855] to-blue-700 rounded-full mx-auto mb-3 flex items-center justify-center text-white text-2xl font-bold">
-                      {member.name.charAt(0)}
-                    </div>
-                    <div className="text-sm text-gray-600">Profile Image</div>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <div className="text-sm text-[#002855] font-semibold mb-3">{member.role}</div>
-                  <p className="text-gray-600 text-sm mb-4">{member.bio}</p>
-                  <div className="flex space-x-3">
-                    <a href="#" className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                      </svg>
-                    </a>
-                    <a href="#" className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                      <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Global Presence */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">Global Presence</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Serving clients worldwide with local expertise and global perspective.
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-r from-[#002855] to-blue-900 rounded-2xl p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center text-white">
-                <div className="text-3xl md:text-4xl font-bold mb-2">12</div>
-                <div className="text-lg">Global Offices</div>
-              </div>
-              <div className="text-center text-white">
-                <div className="text-3xl md:text-4xl font-bold mb-2">40+</div>
-                <div className="text-lg">Countries Served</div>
-              </div>
-              <div className="text-center text-white">
-                <div className="text-3xl md:text-4xl font-bold mb-2">250+</div>
-                <div className="text-lg">Consultants Worldwide</div>
-              </div>
-            </div>
-            
-            <div className="mt-12">
-              <div className="relative h-48 md:h-64 bg-white/10 rounded-lg overflow-hidden backdrop-blur-sm border border-white/20">
-                {/* Simplified world map placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-4xl mb-4">🌍</div>
-                    <div className="text-white text-lg font-semibold">Global Reach</div>
-                    <div className="text-white/80 text-sm">North America • Europe • Asia • Australia</div>
-                  </div>
-                </div>
-                
-                {/* Location markers */}
-                <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-white rounded-full"></div>
-                <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-white rounded-full"></div>
-                <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-white rounded-full"></div>
-                <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-white rounded-full"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gray-50">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
-          <div className="bg-white rounded-2xl p-8 md:p-12 text-center border border-gray-200 shadow-sm">
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
-              Partner With Us
-            </h2>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Join the hundreds of organizations that have transformed their strategy 
-              and achieved remarkable results with our partnership.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/contact" 
-                className="px-8 py-3 bg-[#002855] text-white font-semibold rounded-md hover:bg-blue-900 transition-colors shadow"
-              >
-                Contact Our Team
-              </Link>
-              <Link 
-                href="/careers" 
-                className="px-8 py-3 border border-gray-300 text-gray-900 font-semibold rounded-md hover:bg-gray-50 transition-colors"
-              >
-                Join Our Team
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+// =====================================================
+// MAIN ABOUT PAGE COMPONENT - EXPORTS ALL SECTIONS
+// =====================================================
+export default function AboutPage() {
+  return (
+    <main className="min-h-screen">
+      <AboutHeroSection />
+      <OurStorySection />
+      <OurProcessSection />
+      <MissionVisionSection />
+      <OurValuesSection />
+      <OurTeamSection />
+    </main>
   );
 }

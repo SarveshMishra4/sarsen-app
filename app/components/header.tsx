@@ -119,7 +119,7 @@ export default function Header() {
         buttonText: "Get Report"
       }
     },
-    tools: {
+    services: {
       title: "Tools & Solutions",
       description: "Powerful tools to accelerate your strategic initiatives.",
       links: [
@@ -156,43 +156,43 @@ export default function Header() {
         buttonText: "Try Now"
       }
     },
-    investors: {
-      title: "Investor Relations",
-      description: "Information and resources for our investors and stakeholders.",
-      links: [
-        { 
-          label: "Financial Information", 
-          href: "/investors/financial",
-          description: "Financial statements and data"
-        },
-        { 
-          label: "Press Releases", 
-          href: "/investors/press",
-          description: "Latest company announcements"
-        },
-        { 
-          label: "Governance", 
-          href: "/investors/governance",
-          description: "Corporate governance details"
-        },
-        { 
-          label: "Contact IR", 
-          href: "/investors/contact",
-          description: "Reach our investor relations team"
-        },
-        { 
-          label: "Reports & Filings", 
-          href: "/investors/reports",
-          description: "Regulatory filings and reports"
-        },
-      ],
-      highlight: {
-        title: "Q4 Results",
-        description: "View latest earnings",
-        thumbnail: "/images/earnings-thumb.jpg",
-        buttonText: "View Details"
-      }
-    },
+    // investors: {
+    //   title: "Investor Relations",
+    //   description: "Information and resources for our investors and stakeholders.",
+    //   links: [
+    //     { 
+    //       label: "Financial Information", 
+    //       href: "/investors/financial",
+    //       description: "Financial statements and data"
+    //     },
+    //     { 
+    //       label: "Press Releases", 
+    //       href: "/investors/press",
+    //       description: "Latest company announcements"
+    //     },
+    //     { 
+    //       label: "Governance", 
+    //       href: "/investors/governance",
+    //       description: "Corporate governance details"
+    //     },
+    //     { 
+    //       label: "Contact IR", 
+    //       href: "/investors/contact",
+    //       description: "Reach our investor relations team"
+    //     },
+    //     { 
+    //       label: "Reports & Filings", 
+    //       href: "/investors/reports",
+    //       description: "Regulatory filings and reports"
+    //     },
+    //   ],
+    //   highlight: {
+    //     title: "Q4 Results",
+    //     description: "View latest earnings",
+    //     thumbnail: "/images/earnings-thumb.jpg",
+    //     buttonText: "View Details"
+    //   }
+    // },
   };
 
   const handleMouseEnter = (menu: keyof typeof megaMenuContent) => {
