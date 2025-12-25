@@ -344,9 +344,11 @@ const FAQSection = () => {
     }
   ];
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+
 
   return (
     <section className="bg-[#0A1E3D] py-16 px-4">
