@@ -16,7 +16,7 @@ const ContactHeroSection = () => {
 
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Left Column - Headline */}
           <div className="space-y-6">
             <h1 className="text-4xl md:text-5xl text-white font-light mb-4">
@@ -35,19 +35,19 @@ const ContactHeroSection = () => {
                 {/* Central node */}
                 <circle cx="200" cy="150" r="30" stroke="#4A90E2" strokeWidth="2" fill="#0A1E3D" />
                 <circle cx="200" cy="150" r="20" stroke="#4A90E2" strokeWidth="1" fill="none" />
-                
+
                 {/* Connecting lines to outer nodes */}
                 <line x1="200" y1="150" x2="100" y2="80" stroke="#4A90E2" strokeWidth="1.5" strokeDasharray="3,3" />
                 <line x1="200" y1="150" x2="300" y2="80" stroke="#4A90E2" strokeWidth="1.5" strokeDasharray="3,3" />
                 <line x1="200" y1="150" x2="100" y2="220" stroke="#4A90E2" strokeWidth="1.5" strokeDasharray="3,3" />
                 <line x1="200" y1="150" x2="300" y2="220" stroke="#4A90E2" strokeWidth="1.5" strokeDasharray="3,3" />
-                
+
                 {/* Outer nodes */}
                 <circle cx="100" cy="80" r="15" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" />
                 <circle cx="300" cy="80" r="15" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" />
                 <circle cx="100" cy="220" r="15" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" />
                 <circle cx="300" cy="220" r="15" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" />
-                
+
                 {/* Small decorative dots */}
                 <circle cx="150" cy="100" r="3" fill="#4A90E2" />
                 <circle cx="250" cy="100" r="3" fill="#4A90E2" />
@@ -78,14 +78,14 @@ const ContactFormSection = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
-const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-  const { name, value, type } = e.target;
-  
-  setFormData(prev => ({
-    ...prev,
-    [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
-  }));
-};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    }));
+  };
 
   const handleSubmit = () => {
     // Handle form submission logic here
@@ -97,13 +97,13 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
     <section className="bg-[#E8EEF2] py-16 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12">
-          
+
           {/* Left Column - Contact Form */}
           <div className="bg-white rounded-lg shadow-lg p-8 md:p-10">
             <h2 className="text-3xl font-light text-gray-800 mb-6">
               Send us a Message
             </h2>
-            
+
             <div className="space-y-6">
               {/* Name Field */}
               <div>
@@ -175,14 +175,13 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
                   Message *
                 </label>
                 <textarea
-                  id="message"
-                  name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows="5"
+                  rows={5}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none"
                   placeholder="Tell us about your needs..."
                 ></textarea>
+
               </div>
 
               {/* Submit Button */}
@@ -204,13 +203,13 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
 
           {/* Right Column - Contact Information */}
           <div className="space-y-8">
-            
+
             {/* Contact Details Card */}
             <div className="bg-[#8B9EB0] rounded-lg p-8 text-white">
               <h3 className="text-2xl font-light mb-6">
                 Contact Information
               </h3>
-              
+
               <div className="space-y-6">
                 {/* Email */}
                 <div className="flex items-start space-x-4">
@@ -287,19 +286,19 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
                   {/* Top box */}
                   <rect x="100" y="20" width="100" height="40" rx="5" stroke="#4A90E2" strokeWidth="2" fill="none" />
                   <text x="150" y="45" textAnchor="middle" fill="#4A90E2" fontSize="12">Contact</text>
-                  
+
                   {/* Arrow down */}
                   <line x1="150" y1="60" x2="150" y2="85" stroke="#4A90E2" strokeWidth="2" />
                   <polygon points="150,90 145,80 155,80" fill="#4A90E2" />
-                  
+
                   {/* Middle box */}
                   <rect x="100" y="95" width="100" height="40" rx="5" stroke="#4A90E2" strokeWidth="2" fill="none" />
                   <text x="150" y="120" textAnchor="middle" fill="#4A90E2" fontSize="12">Review</text>
-                  
+
                   {/* Arrow down */}
                   <line x1="150" y1="135" x2="150" y2="160" stroke="#4A90E2" strokeWidth="2" />
                   <polygon points="150,165 145,155 155,155" fill="#4A90E2" />
-                  
+
                   {/* Bottom box */}
                   <rect x="100" y="170" width="100" height="40" rx="5" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" fillOpacity="0.1" />
                   <text x="150" y="195" textAnchor="middle" fill="#4A90E2" fontSize="12">Response</text>
@@ -352,7 +351,7 @@ const FAQSection = () => {
   return (
     <section className="bg-[#0A1E3D] py-16 px-4">
       <div className="max-w-4xl mx-auto">
-        
+
         {/* Section Header */}
         <div className="mb-12">
           <h2 className="text-3xl md:text-4xl font-light text-white mb-4">
@@ -366,7 +365,7 @@ const FAQSection = () => {
         {/* FAQ Accordion */}
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div 
+            <div
               key={index}
               className="bg-[#132B47] rounded-lg overflow-hidden transition-all duration-300"
             >
@@ -377,22 +376,20 @@ const FAQSection = () => {
                 <span className="text-white font-medium pr-4">
                   {faq.question}
                 </span>
-                <svg 
-                  className={`w-5 h-5 text-blue-400 transition-transform duration-300 flex-shrink-0 ${
-                    openIndex === index ? 'transform rotate-180' : ''
-                  }`}
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className={`w-5 h-5 text-blue-400 transition-transform duration-300 flex-shrink-0 ${openIndex === index ? 'transform rotate-180' : ''
+                    }`}
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              
-              <div 
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? 'max-h-96' : 'max-h-0'
-                }`}
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'
+                  }`}
               >
                 <div className="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
                   {faq.answer}
@@ -415,9 +412,9 @@ const LocationMapSection = () => {
   return (
     <section className="bg-[#8B9EB0] py-16 px-4">
       <div className="max-w-7xl mx-auto">
-        
+
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
+
           {/* Left Column - Map Placeholder */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden h-96">
             {/* Reserved space for map integration */}
@@ -431,22 +428,22 @@ const LocationMapSection = () => {
                     <line x1="0" y1={pos} x2="400" y2={pos} stroke="#999" strokeWidth="1" />
                   </g>
                 ))}
-                
+
                 {/* Location marker */}
                 <g transform="translate(200, 180)">
-                  <path 
-                    d="M0,-40 Q-15,-40 -25,-28 Q-30,-20 -30,0 Q-30,20 0,50 Q30,20 30,0 Q30,-20 25,-28 Q15,-40 0,-40 Z" 
-                    fill="#1E5A8E" 
+                  <path
+                    d="M0,-40 Q-15,-40 -25,-28 Q-30,-20 -30,0 Q-30,20 0,50 Q30,20 30,0 Q30,-20 25,-28 Q15,-40 0,-40 Z"
+                    fill="#1E5A8E"
                     opacity="0.8"
                   />
                   <circle cx="0" cy="-15" r="10" fill="white" />
                 </g>
               </svg>
-              
+
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <svg className="w-16 h-16 mx-auto mb-2 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                   </svg>
                   <p className="text-gray-500 font-medium">Map Integration</p>
                 </div>
@@ -459,21 +456,21 @@ const LocationMapSection = () => {
             <h2 className="text-3xl md:text-4xl font-light mb-6">
               Visit Our Office
             </h2>
-            
+
             <div className="space-y-4 text-sm leading-relaxed">
               <p className="text-white/90">
                 <strong className="text-white block mb-1">Address:</strong>
                 123 Business Street, Suite 100<br />
                 City, State 12345
               </p>
-              
+
               <p className="text-white/90">
                 <strong className="text-white block mb-1">Directions:</strong>
-                Our office is conveniently located in the heart of the business district, 
-                easily accessible by public transportation or car. Free parking available 
+                Our office is conveniently located in the heart of the business district,
+                easily accessible by public transportation or car. Free parking available
                 in the building garage.
               </p>
-              
+
               <p className="text-white/90">
                 <strong className="text-white block mb-1">Nearby Landmarks:</strong>
                 • Central Business Plaza (2 blocks east)<br />
@@ -501,11 +498,11 @@ const CTASection = () => {
   return (
     <section className="bg-[#0A1E3D] py-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
-        
+
         <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
           Ready to Get Started?
         </h2>
-        
+
         <p className="text-gray-300 text-lg mb-8 leading-relaxed">
           Schedule a consultation with our team to discuss how we can help your business grow
         </p>
@@ -527,19 +524,19 @@ const CTASection = () => {
               {/* Left circle */}
               <circle cx="100" cy="50" r="25" stroke="#4A90E2" strokeWidth="2" fill="none" />
               <circle cx="100" cy="50" r="15" stroke="#4A90E2" strokeWidth="1" fill="none" />
-              
+
               {/* Connecting line */}
               <line x1="125" y1="50" x2="225" y2="50" stroke="#4A90E2" strokeWidth="2" strokeDasharray="5,5" />
               <polygon points="230,50 220,45 220,55" fill="#4A90E2" />
-              
+
               {/* Middle circle */}
               <circle cx="300" cy="50" r="30" stroke="#4A90E2" strokeWidth="2" fill="none" />
               <circle cx="300" cy="50" r="18" stroke="#4A90E2" strokeWidth="1" fill="none" />
-              
+
               {/* Connecting line */}
               <line x1="330" y1="50" x2="445" y2="50" stroke="#4A90E2" strokeWidth="2" strokeDasharray="5,5" />
               <polygon points="450,50 440,45 440,55" fill="#4A90E2" />
-              
+
               {/* Right circle */}
               <circle cx="500" cy="50" r="25" stroke="#4A90E2" strokeWidth="2" fill="#1E5A8E" fillOpacity="0.3" />
               <circle cx="500" cy="50" r="15" stroke="#4A90E2" strokeWidth="1" fill="none" />
