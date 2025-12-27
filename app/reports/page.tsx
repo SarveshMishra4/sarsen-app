@@ -62,7 +62,14 @@ const ReportsHero = () => {
 // FILTER TABS COMPONENT
 // Category filter with active state
 // =====================================================
-const FilterTabs = ({ activeFilter, setActiveFilter }) => {
+const FilterTabs = ({
+  activeFilter,
+  setActiveFilter,
+}: {
+  activeFilter: string;
+  setActiveFilter: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+
   const filters = [
     'All Reports',
     'Indian Startup Ecosystem',
@@ -285,6 +292,7 @@ const FilterTabs = ({
   activeFilter: string;
   setActiveFilter: React.Dispatch<React.SetStateAction<string>>;
 }) => {
+
   const allReports = [
     {
       category: 'Indian Startup Ecosystem',
