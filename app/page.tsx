@@ -1,7 +1,7 @@
 // app/page.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // =====================================================
 // TYPING EFFECT HOOK
@@ -18,21 +18,17 @@ const useTypingEffect = (phrases: string[], typingSpeed = 100, deletingSpeed = 5
     
     const timeout = setTimeout(() => {
       if (!isDeleting) {
-        // TYPING MODE: Add characters one by one
         if (charIndex < currentPhrase.length) {
           setDisplayText(currentPhrase.substring(0, charIndex + 1));
           setCharIndex(charIndex + 1);
         } else {
-          // Finished typing, pause then start deleting
           setTimeout(() => setIsDeleting(true), pauseDuration);
         }
       } else {
-        // DELETING MODE: Remove characters one by one
         if (charIndex > 0) {
           setDisplayText(currentPhrase.substring(0, charIndex - 1));
           setCharIndex(charIndex - 1);
         } else {
-          // Finished deleting, move to next phrase
           setIsDeleting(false);
           setPhraseIndex((phraseIndex + 1) % phrases.length);
         }
@@ -47,12 +43,8 @@ const useTypingEffect = (phrases: string[], typingSpeed = 100, deletingSpeed = 5
 
 // =====================================================
 // HERO SECTION COMPONENT
-// Dark blue background with search bar and animated problem statements
-// LEFT: Search bar + "Are you an entrepreneur?" + rotating problems
-// RIGHT: SVG illustration (placeholder for now)
 // =====================================================
 const HeroSection = () => {
-  // Array of entrepreneur problems - displayed as typing effect
   const problemPhrases = [
     "Struggling with customer acquisition costs?",
     "Unable to find the right clients?",
@@ -63,20 +55,14 @@ const HeroSection = () => {
     "Need funding but don't know where to start?"
   ];
 
-  // Hook to create typing animation effect
   const typedProblem = useTypingEffect(problemPhrases, 80, 40, 2500);
 
   return (
     <section className="relative bg-[#0A1E3D] min-h-[600px] pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* ==================== LEFT COLUMN ==================== */}
-          {/* Search Bar + Entrepreneur Question + Rotating Problems */}
           <div className="space-y-8 lg:space-y-10">
-            
-            {/* SEARCH BAR */}
             <div className="max-w-full lg:max-w-xl">
               <div className="relative">
                 <input
@@ -85,7 +71,6 @@ const HeroSection = () => {
                   className="w-full px-5 py-4 sm:px-6 sm:py-5 rounded-lg bg-[#1a3352] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 text-base sm:text-lg transition-all duration-300 border border-transparent hover:border-blue-500"
                   aria-label="Search for services, reports, or tools"
                 />
-                {/* Search Icon */}
                 <svg
                   className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 w-5 h-5 sm:w-6 sm:h-6 text-gray-400 pointer-events-none"
                   fill="none"
@@ -103,30 +88,22 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* ENTREPRENEUR QUESTION */}
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl text-white font-light tracking-wide">
                 Are you an entrepreneur?
               </h2>
               
-              {/* TYPING EFFECT - Rotating Problems */}
               <div className="min-h-[80px] sm:min-h-[100px]">
                 <p className="text-2xl sm:text-3xl md:text-4xl text-blue-300 font-light leading-tight">
                   {typedProblem}
-                  {/* Blinking cursor */}
                   <span className="animate-pulse">|</span>
                 </p>
               </div>
             </div>
-
           </div>
 
-          {/* ==================== RIGHT COLUMN ==================== */}
-          {/* SVG Illustration Placeholder - Replace with actual SVG later */}
           <div className="relative h-80 sm:h-96 lg:h-[450px] flex items-center justify-center lg:justify-end">
             <div className="w-full h-full flex items-center justify-center">
-              
-              {/* PLACEHOLDER SVG - Replace this entire div with your illustration */}
               <div className="w-full max-w-lg h-full bg-gradient-to-br from-blue-900/20 to-transparent rounded-lg flex items-center justify-center border border-blue-800/30">
                 <div className="text-center text-blue-400/50 p-8">
                   <svg className="w-24 h-24 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
@@ -135,10 +112,8 @@ const HeroSection = () => {
                   <p className="text-sm">SVG Illustration<br/>Placeholder</p>
                 </div>
               </div>
-              
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -147,9 +122,6 @@ const HeroSection = () => {
 
 // =====================================================
 // REPORT SECTION COMPONENT
-// Lighter background (slight contrast from dark blue)
-// LEFT: Report name + description
-// RIGHT: Report thumbnail with download button
 // =====================================================
 const ReportSection = () => {
   return (
@@ -157,16 +129,11 @@ const ReportSection = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           
-          {/* ==================== LEFT COLUMN ==================== */}
-          {/* Report Name + Description */}
           <div className="space-y-6">
-            
-            {/* Report Title */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-800 leading-tight">
               Indian Startup Ecosystem Report 2024
             </h2>
             
-            {/* Report Description */}
             <div className="space-y-4">
               <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                 Comprehensive analysis of India's startup landscape covering funding trends, 
@@ -180,7 +147,6 @@ const ReportSection = () => {
               </p>
             </div>
 
-            {/* Report Meta Information */}
             <div className="flex flex-wrap gap-4 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -195,28 +161,18 @@ const ReportSection = () => {
                 <span>Last updated: Dec 2024</span>
               </div>
             </div>
-
           </div>
 
-          {/* ==================== RIGHT COLUMN ==================== */}
-          {/* Report Thumbnail Card with Download Button */}
           <div className="relative flex justify-center lg:justify-end">
             <div className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-md w-full transform transition-transform duration-300 hover:scale-105">
-              
-              {/* Report Preview/Cover */}
               <div className="bg-gradient-to-br from-[#1E5A8E] to-[#2B7AB8] h-72 sm:h-80 relative overflow-hidden">
-                
-                {/* Decorative Background Pattern */}
                 <div className="absolute inset-0 opacity-10">
                   <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full"></div>
                   <div className="absolute bottom-10 right-10 w-24 h-24 border-2 border-white rounded-full"></div>
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-white rounded-full"></div>
                 </div>
 
-                {/* Report Cover Content */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-8 text-center">
-                  
-                  {/* Icon/Logo */}
                   <div className="mb-6">
                     <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                       <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -225,18 +181,11 @@ const ReportSection = () => {
                     </div>
                   </div>
 
-                  {/* Title on Cover */}
-                  <h3 className="text-xl font-semibold mb-2">
-                    Indian Startup
-                  </h3>
-                  <h3 className="text-2xl font-bold mb-4">
-                    Ecosystem Report
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">Indian Startup</h3>
+                  <h3 className="text-2xl font-bold mb-4">Ecosystem Report</h3>
                   <div className="text-sm opacity-90">2024 Edition</div>
-                  
                 </div>
 
-                {/* Status Indicator Dots (Right Side) */}
                 <div className="absolute right-6 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3">
                   <div className="w-2.5 h-2.5 rounded-full bg-white"></div>
                   <div className="w-2.5 h-2.5 rounded-full bg-white/70"></div>
@@ -245,7 +194,6 @@ const ReportSection = () => {
                 </div>
               </div>
               
-              {/* Download Button Container */}
               <div className="p-6 bg-white">
                 <button className="w-full bg-[#0A1E3D] hover:bg-[#132B47] text-white py-3.5 px-6 rounded-lg transition-all duration-300 font-medium text-base flex items-center justify-center gap-2 group">
                   <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,7 +204,6 @@ const ReportSection = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -264,51 +211,67 @@ const ReportSection = () => {
 };
 
 // =====================================================
-// COMPANY HELPS SECTION - "What do we specialize in"
-// Dark blue background
-// Creative layout showing expertise areas
-// Feel free to customize this layout completely
+// COMPANY HELPS SECTION - REDESIGNED WITH CARDS
+// Cards with dissolve animation on scroll
+// No numbering, outcomes integrated into description
+// Space for SVG diagram at top
 // =====================================================
 const CompanyHelpsSection = () => {
-  // Expertise areas - professional categorization
+  const [activeCard, setActiveCard] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   const expertiseAreas = [
     {
-      number: "01",
       title: "Growth & Revenue Strategy",
-      description: "Go-to-market planning, sales system development, pricing optimization, customer acquisition frameworks, and revenue diversification strategies for businesses from pre-revenue to ₹10Cr.",
-      outcomes: ["Customer acquisition cost reduction", "Sales process systematization", "Revenue stream diversification"]
+      description: "Go-to-market planning, sales system development, pricing optimization, customer acquisition frameworks, and revenue diversification strategies for businesses from pre-revenue to ₹10Cr. We help reduce customer acquisition costs, systematize sales processes, and diversify revenue streams effectively.",
     },
     {
-      number: "02",
       title: "Financial Planning & Capital",
-      description: "Cash flow management systems, fundraising readiness, financial modeling, profit improvement planning, and business valuation for funding, scaling, or exit scenarios.",
-      outcomes: ["Fundraising preparation", "Cash flow optimization", "Margin improvement"]
+      description: "Cash flow management systems, fundraising readiness, financial modeling, profit improvement planning, and business valuation for funding, scaling, or exit scenarios. Our work prepares businesses for fundraising, optimizes cash flow, and improves margins sustainably.",
     },
     {
-      number: "03",
       title: "Operations & Efficiency",
-      description: "Business process optimization, cost reduction audits, supply chain management, team structure design, and performance management systems that drive operational excellence.",
-      outcomes: ["Process efficiency gains", "Cost reduction", "Team productivity enhancement"]
+      description: "Business process optimization, cost reduction audits, supply chain management, team structure design, and performance management systems that drive operational excellence. Expect process efficiency gains, significant cost reduction, and enhanced team productivity.",
     },
     {
-      number: "04",
       title: "Strategic Planning & Positioning",
-      description: "Annual strategic planning, competitive intelligence, market positioning, digital transformation roadmaps, and turnaround strategies for businesses facing critical inflection points.",
-      outcomes: ["Strategic clarity", "Competitive differentiation", "Market positioning"]
+      description: "Annual strategic planning, competitive intelligence, market positioning, digital transformation roadmaps, and turnaround strategies for businesses facing critical inflection points. We deliver strategic clarity, competitive differentiation, and strong market positioning.",
     },
     {
-      number: "05",
       title: "Product & Innovation",
-      description: "Product-market fit validation, new product launch planning, innovation frameworks, and customer feedback systems to ensure you're building what the market actually wants.",
-      outcomes: ["Product validation", "Launch success", "Innovation capability"]
+      description: "Product-market fit validation, new product launch planning, innovation frameworks, and customer feedback systems to ensure you're building what the market actually wants. Our approach validates products, ensures launch success, and builds innovation capability within teams.",
     }
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const section = sectionRef.current;
+      const sectionTop = section.getBoundingClientRect().top;
+      const sectionHeight = section.offsetHeight;
+      const windowHeight = window.innerHeight;
+      
+      if (sectionTop < windowHeight && sectionTop > -sectionHeight) {
+        const scrollProgress = (windowHeight - sectionTop) / (windowHeight + sectionHeight);
+        const cardIndex = Math.min(
+          Math.floor(scrollProgress * expertiseAreas.length),
+          expertiseAreas.length - 1
+        );
+        setActiveCard(cardIndex);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [expertiseAreas.length]);
+
   return (
-    <section className="bg-[#0A1E3D] py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} className="bg-[#0A1E3D] py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         
-        {/* ==================== SECTION HEADER ==================== */}
         <div className="max-w-4xl mb-16 sm:mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-6 leading-tight">
             What Sareen & Company Specializes In
@@ -316,69 +279,56 @@ const CompanyHelpsSection = () => {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             We serve businesses from self-funded startups to ₹10Cr revenue companies. Our expertise 
             has been sharpened in the most resource-constrained environments—early-stage startups—where 
-            every decision matters and every rupee counts. That same strategic rigor now serves clients 
-            at every stage of growth.
+            every decision matters and every rupee counts.
           </p>
         </div>
 
-        {/* ==================== EXPERTISE LIST ==================== */}
-        {/* Professional vertical list with elegant separators */}
-        <div className="space-y-0">
+        <div className="mb-16 bg-[#132B47] rounded-2xl p-8 border border-blue-900/30">
+          <div className="text-center text-blue-400/50 py-12">
+            <svg className="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+            </svg>
+            <p className="text-sm">SVG Diagram Placeholder<br/>Add your custom diagram here</p>
+          </div>
+        </div>
+
+        <div className="relative min-h-[400px]">
           {expertiseAreas.map((area, index) => (
-            <div 
+            <div
               key={index}
-              className="group"
+              className={`absolute inset-0 transition-opacity duration-700 ${
+                index === activeCard ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
             >
-              {/* Expertise Item */}
-              <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 py-10 sm:py-12 lg:py-14 border-b border-blue-900/30 hover:border-blue-700/50 transition-all duration-300">
-                
-                {/* LEFT SIDE: Number + Title */}
-                <div className="lg:col-span-4 space-y-3">
-                  {/* Number Badge */}
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-900/30 border border-blue-700/30 group-hover:bg-blue-800/40 group-hover:border-blue-600/50 transition-all duration-300">
-                    <span className="text-blue-400 font-light text-lg">{area.number}</span>
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="text-white text-xl sm:text-2xl font-medium leading-tight group-hover:text-blue-300 transition-colors duration-300">
-                    {area.title}
-                  </h3>
-                </div>
-
-                {/* MIDDLE: Description */}
-                <div className="lg:col-span-5">
-                  <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-                    {area.description}
-                  </p>
-                </div>
-
-                {/* RIGHT SIDE: Key Outcomes */}
-                <div className="lg:col-span-3">
-                  <div className="space-y-2">
-                    <p className="text-blue-400 text-xs uppercase tracking-wider font-medium mb-3">
-                      Key Outcomes
-                    </p>
-                    {area.outcomes.map((outcome, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <svg className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span className="text-gray-400 text-xs sm:text-sm">{outcome}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
+              <div className="bg-gradient-to-br from-[#132B47] to-[#1a3a5c] rounded-2xl p-8 sm:p-10 lg:p-12 border border-blue-800/30 hover:border-blue-700/50 transition-all duration-300">
+                <h3 className="text-white text-2xl sm:text-3xl lg:text-4xl font-medium mb-6 leading-tight">
+                  {area.title}
+                </h3>
+                <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+                  {area.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* ==================== BOTTOM CTA SECTION ==================== */}
+        <div className="flex justify-center gap-2 mt-8">
+          {expertiseAreas.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveCard(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === activeCard 
+                  ? 'bg-blue-500 w-12 h-3' 
+                  : 'bg-blue-800/50 w-3 h-3 hover:bg-blue-700/50'
+              }`}
+              aria-label={`View service ${index + 1}`}
+            />
+          ))}
+        </div>
+
         <div className="mt-16 sm:mt-20 pt-12 border-t border-blue-900/30">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-            
-            {/* Left: Text */}
             <div className="max-w-2xl">
               <p className="text-gray-300 text-base sm:text-lg mb-2">
                 Every engagement delivers tangible outputs—financial models, strategic roadmaps, 
@@ -389,7 +339,6 @@ const CompanyHelpsSection = () => {
               </p>
             </div>
 
-            {/* Right: CTA Button */}
             <div className="flex-shrink-0">
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg transition-all duration-300 font-medium text-base shadow-lg hover:shadow-xl flex items-center gap-3 group">
                 <span>View All Services</span>
@@ -398,34 +347,27 @@ const CompanyHelpsSection = () => {
                 </svg>
               </button>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );
 };
-
 // =====================================================
-// TESTIMONIALS SECTION - Accomplished Entrepreneurs
-// White background section
-// LEFT: Animated quote card (slides in from left)
-// RIGHT: Founder photo (dissolves in/out)
-// Quotes about importance of strategy/guidance (not direct testimonials)
+// TESTIMONIALS SECTION - REDESIGNED
+// Reduced height, no shadow on image
+// Image positioned at bottom edge with no padding
 // =====================================================
 const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Accomplished entrepreneurs who have emphasized strategic guidance
-  // These are NOT direct testimonials - they're quotes about importance of strategy
   const entrepreneurs = [
     {
       id: 1,
       name: "Naval Ravikant",
       title: "Founder, AngelList",
       quote: "Play long-term games with long-term people. Specific knowledge is found by pursuing your genuine curiosity and passion rather than whatever is hot right now. Building anything great requires careful strategic thinking combined with relentless execution.",
-      image: "/placeholder1.jpg" // Replace with actual image path
+      image: "/placeholder1.jpg"
     },
     {
       id: 2,
@@ -464,7 +406,6 @@ const TestimonialsSection = () => {
     }
   ];
 
-  // Auto-rotate every 6 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % entrepreneurs.length);
@@ -473,11 +414,10 @@ const TestimonialsSection = () => {
   }, [entrepreneurs.length]);
 
   return (
-    <section className="bg-white py-20 sm:py-24 lg:py-28 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-14 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-800 mb-6">
             Accomplished Entrepreneurs Understand What You Don't
           </h2>
@@ -487,89 +427,65 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end">
           
-          {/* ==================== LEFT COLUMN ==================== */}
-          {/* Quote Card - Slides in from left */}
           <div className="order-2 lg:order-1">
             <div 
               key={`card-${activeIndex}`}
               className="animate-slideInLeft"
             >
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 sm:p-10 lg:p-12 shadow-xl border border-gray-200">
+              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 sm:p-8 lg:p-10 border border-gray-200">
                 
-                {/* Quote Icon */}
-                <div className="text-blue-500 mb-6">
-                  <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="currentColor" viewBox="0 0 24 24">
+                <div className="text-blue-500 mb-4">
+                  <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
                   </svg>
                 </div>
 
-                {/* Quote Text */}
-                <blockquote className="text-gray-700 text-base sm:text-lg lg:text-xl leading-relaxed mb-8 italic">
+                <blockquote className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6 italic">
                   "{entrepreneurs[activeIndex].quote}"
                 </blockquote>
 
-                {/* Author Info */}
-                <div className="pt-6 border-t border-gray-300">
-                  <p className="text-gray-900 font-semibold text-lg sm:text-xl mb-1">
+                <div className="pt-4 border-t border-gray-300">
+                  <p className="text-gray-900 font-semibold text-lg mb-1">
                     {entrepreneurs[activeIndex].name}
                   </p>
-                  <p className="text-gray-600 text-sm sm:text-base">
+                  <p className="text-gray-600 text-sm">
                     {entrepreneurs[activeIndex].title}
                   </p>
                 </div>
-
               </div>
             </div>
           </div>
 
-          {/* ==================== RIGHT COLUMN ==================== */}
-          {/* Founder Photo - Dissolves in/out */}
-          <div className="order-1 lg:order-2 relative h-96 sm:h-[28rem] lg:h-[32rem] flex items-center justify-center">
+          <div className="order-1 lg:order-2 relative h-56 sm:h-64 lg:h-72 flex items-end justify-center lg:justify-end">
             
             <div 
               key={`image-${activeIndex}`}
-              className="relative w-full max-w-sm h-full rounded-2xl overflow-hidden shadow-2xl animate-dissolve"
+              className="relative w-full max-w-xs h-full rounded-t-2xl overflow-hidden animate-dissolve"
             >
-              {/* PLACEHOLDER IMAGE - Replace with actual founder photos */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 flex items-end justify-center pb-0">
                 
-                {/* Profile Icon Placeholder */}
-                <div className="text-center">
-                  <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gray-700 flex items-center justify-center mx-auto mb-6">
-                    <svg className="w-16 h-16 sm:w-20 sm:h-20 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                <div className="text-center pb-6">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gray-700 flex items-center justify-center mx-auto mb-3">
+                    <svg className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                     </svg>
                   </div>
                   
-                  {/* Name Overlay */}
-                  <div className="text-white px-6">
-                    <p className="font-semibold text-xl sm:text-2xl mb-2">
+                  <div className="text-white px-4">
+                    <p className="font-semibold text-lg sm:text-xl mb-1">
                       {entrepreneurs[activeIndex].name}
                     </p>
-                    <p className="text-sm sm:text-base text-gray-200">
+                    <p className="text-sm text-gray-200">
                       {entrepreneurs[activeIndex].title}
                     </p>
                   </div>
                 </div>
-
               </div>
-
-              {/* Uncomment and use Next.js Image when you have actual photos */}
-              {/* 
-              <Image 
-                src={entrepreneurs[activeIndex].image} 
-                alt={entrepreneurs[activeIndex].name}
-                fill
-                className="object-cover"
-                priority
-              /> 
-              */}
             </div>
 
-            {/* Navigation Dots */}
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
               {entrepreneurs.map((_, index) => (
                 <button
                   key={index}
@@ -583,75 +499,83 @@ const TestimonialsSection = () => {
                 />
               ))}
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );
 };
 
 // =====================================================
-// FREE RESOURCES SECTION
-// Light background with resource cards
-// Each card has: Name, description, and subtle visual representation
-// Bottom-right corner: Subtle graphics (chart/graph/star icons)
+// FREE RESOURCES SECTION - REDESIGNED
+// Horizontal scrollable strip with navigation buttons
 // =====================================================
 const FreeResourcesSection = () => {
-  // Resource data with descriptions and visual types
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   const resources = [
     {
       title: "Startup Valuation Calculator",
-      description: "Calculate your company's valuation using multiple methodologies - DCF, comparable analysis, and revenue multiples. Get instant estimates based on your financials.",
-      visualType: "chart", // For rendering appropriate icon
+      description: "Calculate your company's valuation using multiple methodologies - DCF, comparable analysis, and revenue multiples.",
+      visualType: "chart",
       bg: "bg-gradient-to-br from-[#7B8FA5] to-[#8B9EB0]"
     },
     {
       title: "Team Psychometric Assessment",
-      description: "Evaluate team dynamics, leadership styles, and cultural fit. Identify strengths, gaps, and areas for development in your founding team or key hires.",
+      description: "Evaluate team dynamics, leadership styles, and cultural fit. Identify strengths and gaps in your team.",
       visualType: "graph",
       bg: "bg-gradient-to-br from-[#6B7F95] to-[#7B8FA5]"
     },
     {
       title: "Cash Flow Forecasting Tool",
-      description: "Project your 13-week cash runway with scenario planning. Input revenue, expenses, and see when you'll need funding or reach profitability.",
+      description: "Project your 13-week cash runway with scenario planning. See when you'll need funding or reach profitability.",
       visualType: "bars",
       bg: "bg-gradient-to-br from-[#8B9EB0] to-[#9BAEC0]"
     },
     {
       title: "Market Sizing Framework",
-      description: "Calculate TAM, SAM, and SOM for your business. Bottom-up and top-down methodologies with templates to present to investors.",
+      description: "Calculate TAM, SAM, and SOM for your business with templates to present to investors.",
       visualType: "star",
       bg: "bg-gradient-to-br from-[#7B8FA5] to-[#8B9EB0]"
+    },
+    {
+      title: "Financial Model Template",
+      description: "Pre-built Excel model with P&L, balance sheet, and cash flow projections for startups.",
+      visualType: "chart",
+      bg: "bg-gradient-to-br from-[#6B7F95] to-[#7B8FA5]"
+    },
+    {
+      title: "Pitch Deck Framework",
+      description: "Comprehensive slide-by-slide guide for creating investor-ready pitch decks that convert.",
+      visualType: "star",
+      bg: "bg-gradient-to-br from-[#8B9EB0] to-[#9BAEC0]"
     }
   ];
 
-  // Function to render appropriate icon based on visual type
   const renderVisualIcon = (type: string) => {
     switch(type) {
       case 'chart':
         return (
-          <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
           </svg>
         );
       case 'graph':
         return (
-          <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
           </svg>
         );
       case 'bars':
         return (
-          <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         );
       case 'star':
         return (
-          <svg className="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
           </svg>
         );
@@ -660,12 +584,31 @@ const FreeResourcesSection = () => {
     }
   };
 
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 350;
+      const newPosition = direction === 'left' 
+        ? scrollPosition - scrollAmount 
+        : scrollPosition + scrollAmount;
+      
+      scrollContainerRef.current.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+      setScrollPosition(newPosition);
+    }
+  };
+
+  const canScrollLeft = scrollPosition > 0;
+  const canScrollRight = scrollContainerRef.current 
+    ? scrollPosition < (scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth - 10)
+    : true;
+
   return (
     <section className="bg-[#E8EEF2] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
-        <div className="mb-12 sm:mb-16">
+        <div className="mb-8 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-800 mb-4">
             Free Resources
           </h2>
@@ -675,41 +618,71 @@ const FreeResourcesSection = () => {
           </p>
         </div>
 
-        {/* Resource Cards Grid */}
-        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-10">
-          {resources.map((resource, index) => (
-            <div 
-              key={index}
-              className={`${resource.bg} rounded-2xl p-8 sm:p-10 lg:p-12 min-h-[280px] sm:min-h-[320px] flex flex-col justify-between hover:shadow-2xl transition-all duration-300 cursor-pointer group relative overflow-hidden`}
-            >
-              
-              {/* Main Content - Top Section */}
-              <div className="relative z-10">
-                {/* Resource Title */}
-                <h3 className="text-white text-xl sm:text-2xl lg:text-3xl font-medium mb-4 group-hover:translate-x-1 transition-transform duration-300">
-                  {resource.title}
-                </h3>
+        <div className="relative">
+          
+          <button
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg transition-all duration-300 ${
+              canScrollLeft 
+                ? 'hover:bg-gray-100 cursor-pointer opacity-100' 
+                : 'opacity-30 cursor-not-allowed'
+            }`}
+            aria-label="Scroll left"
+          >
+            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-3 shadow-lg transition-all duration-300 ${
+              canScrollRight 
+                ? 'hover:bg-gray-100 cursor-pointer opacity-100' 
+                : 'opacity-30 cursor-not-allowed'
+            }`}
+            aria-label="Scroll right"
+          >
+            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto scrollbar-hide px-12 py-2"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            onScroll={(e) => setScrollPosition((e.target as HTMLDivElement).scrollLeft)}
+          >
+            {resources.map((resource, index) => (
+              <div 
+                key={index}
+                className={`${resource.bg} rounded-2xl p-8 min-w-[320px] sm:min-w-[340px] h-[260px] flex flex-col justify-between hover:shadow-2xl transition-all duration-300 cursor-pointer group relative overflow-hidden flex-shrink-0`}
+              >
                 
-                {/* Resource Description */}
-                <p className="text-white/90 text-sm sm:text-base leading-relaxed">
-                  {resource.description}
-                </p>
+                <div className="relative z-10">
+                  <h3 className="text-white text-xl sm:text-2xl font-medium mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                    {resource.title}
+                  </h3>
+                  
+                  <p className="text-white/90 text-sm leading-relaxed">
+                    {resource.description}
+                  </p>
+                </div>
+
+                <div className="absolute bottom-6 right-6 text-white/20 group-hover:text-white/30 transition-colors duration-300">
+                  {renderVisualIcon(resource.visualType)}
+                </div>
+
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-all duration-300"></div>
               </div>
-
-              {/* Visual Icon - Bottom Right Corner */}
-              <div className="absolute bottom-6 right-6 text-white/20 group-hover:text-white/30 transition-colors duration-300">
-                {renderVisualIcon(resource.visualType)}
-              </div>
-
-              {/* Hover Overlay Effect */}
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-all duration-300"></div>
-
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* More Resources Button - Bottom Right */}
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-8">
           <button className="bg-white text-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:shadow-xl transition-all duration-300 font-medium border border-gray-300 hover:border-gray-400 flex items-center gap-2 group">
             <span>More Resources</span>
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -717,7 +690,6 @@ const FreeResourcesSection = () => {
             </svg>
           </button>
         </div>
-
       </div>
     </section>
   );
@@ -725,22 +697,17 @@ const FreeResourcesSection = () => {
 
 // =====================================================
 // STORY & PROCESS SECTION
-// Dark blue background
-// More emphasis on PROCESS than story
-// Includes a full-width diagram explaining how we work
 // =====================================================
 const StoryProcessSection = () => {
   return (
     <section className="bg-[#0A1E3D] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         
-        {/* Brief Story - Light emphasis */}
         <div className="mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-6">
             Our Story & Process
           </h2>
           
-          {/* Story Text - Concise */}
           <div className="max-w-4xl">
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
               Founded by entrepreneurs who have built, scaled, and exited businesses across multiple 
@@ -754,53 +721,30 @@ const StoryProcessSection = () => {
           </div>
         </div>
 
-        {/* OUR PROCESS - Main Focus */}
         <div className="mb-8">
           <h3 className="text-2xl sm:text-3xl font-light text-white mb-8">
             How We Work
           </h3>
         </div>
 
-        {/* Process Diagram - Full Width */}
         <div className="bg-[#132B47] rounded-2xl p-6 sm:p-8 lg:p-12 overflow-x-auto border border-blue-900/30">
-          
-          {/* SVG Process Diagram */}
           <svg 
             viewBox="0 0 1200 400" 
             className="w-full h-auto min-w-[800px]"
             preserveAspectRatio="xMidYMid meet"
           >
-            
-            {/* MAIN TIMELINE - Horizontal Line */}
-            <line 
-              x1="100" 
-              y1="200" 
-              x2="1100" 
-              y2="200" 
-              stroke="#4A90E2" 
-              strokeWidth="3" 
-              strokeLinecap="round"
-            />
+            <line x1="100" y1="200" x2="1100" y2="200" stroke="#4A90E2" strokeWidth="3" strokeLinecap="round" />
 
-            {/* STAGE 1: DISCOVERY */}
             <g>
-              {/* Vertical connector */}
               <line x1="150" y1="180" x2="150" y2="220" stroke="#4A90E2" strokeWidth="2" />
-              
-              {/* Main circle */}
               <circle cx="150" cy="200" r="40" fill="rgba(74, 144, 226, 0.2)" stroke="#4A90E2" strokeWidth="3" />
               <circle cx="150" cy="200" r="25" fill="rgba(74, 144, 226, 0.4)" />
-              
-              {/* Number */}
               <text x="150" y="210" textAnchor="middle" fill="#fff" fontSize="24" fontWeight="bold">1</text>
-              
-              {/* Label */}
               <text x="150" y="130" textAnchor="middle" fill="#A0AEC0" fontSize="16" fontWeight="500">DISCOVERY</text>
               <text x="150" y="280" textAnchor="middle" fill="#CBD5E0" fontSize="13">Deep dive into</text>
               <text x="150" y="300" textAnchor="middle" fill="#CBD5E0" fontSize="13">your business</text>
             </g>
 
-            {/* STAGE 2: DIAGNOSIS */}
             <g>
               <line x1="325" y1="180" x2="325" y2="220" stroke="#4A90E2" strokeWidth="2" />
               <circle cx="325" cy="200" r="45" fill="rgba(74, 144, 226, 0.25)" stroke="#4A90E2" strokeWidth="3" />
@@ -811,7 +755,6 @@ const StoryProcessSection = () => {
               <text x="325" y="300" textAnchor="middle" fill="#CBD5E0" fontSize="13">problems & gaps</text>
             </g>
 
-            {/* STAGE 3: STRATEGY (Larger - Main focus) */}
             <g>
               <line x1="550" y1="170" x2="550" y2="230" stroke="#4A90E2" strokeWidth="2" />
               <circle cx="550" cy="200" r="55" fill="rgba(74, 144, 226, 0.3)" stroke="#4A90E2" strokeWidth="4" />
@@ -822,7 +765,6 @@ const StoryProcessSection = () => {
               <text x="550" y="310" textAnchor="middle" fill="#CBD5E0" fontSize="13">ready roadmap</text>
             </g>
 
-            {/* STAGE 4: DELIVERY */}
             <g>
               <line x1="775" y1="180" x2="775" y2="220" stroke="#4A90E2" strokeWidth="2" />
               <circle cx="775" cy="200" r="45" fill="rgba(74, 144, 226, 0.25)" stroke="#4A90E2" strokeWidth="3" />
@@ -833,7 +775,6 @@ const StoryProcessSection = () => {
               <text x="775" y="300" textAnchor="middle" fill="#CBD5E0" fontSize="13">documents & tools</text>
             </g>
 
-            {/* STAGE 5: SUPPORT */}
             <g>
               <line x1="1000" y1="180" x2="1000" y2="220" stroke="#4A90E2" strokeWidth="2" />
               <circle cx="1000" cy="200" r="40" fill="rgba(74, 144, 226, 0.2)" stroke="#4A90E2" strokeWidth="3" />
@@ -844,20 +785,11 @@ const StoryProcessSection = () => {
               <text x="1000" y="300" textAnchor="middle" fill="#CBD5E0" fontSize="13">implementation</text>
             </g>
 
-            {/* Arrow at the end */}
-            <path 
-              d="M 1090 200 L 1110 190 L 1110 210 Z" 
-              fill="#4A90E2" 
-            />
-
+            <path d="M 1090 200 L 1110 190 L 1110 210 Z" fill="#4A90E2" />
           </svg>
-
         </div>
 
-        {/* Process Details - Below Diagram */}
         <div className="grid md:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
-          
-          {/* Speed */}
           <div className="text-center">
             <div className="text-blue-400 mb-3">
               <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -868,7 +800,6 @@ const StoryProcessSection = () => {
             <p className="text-gray-400 text-sm">Most projects: 2 weeks. You get answers fast, not in 3-month engagements.</p>
           </div>
 
-          {/* Tangible */}
           <div className="text-center">
             <div className="text-blue-400 mb-3">
               <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -879,7 +810,6 @@ const StoryProcessSection = () => {
             <p className="text-gray-400 text-sm">Excel models, frameworks, plans—things you can use immediately, not vague advice.</p>
           </div>
 
-          {/* Practical */}
           <div className="text-center">
             <div className="text-blue-400 mb-3">
               <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -889,9 +819,7 @@ const StoryProcessSection = () => {
             <h4 className="text-white text-lg sm:text-xl font-medium mb-2">Execution-Ready</h4>
             <p className="text-gray-400 text-sm">Your team can implement immediately. No consulting dependency created.</p>
           </div>
-
         </div>
-
       </div>
     </section>
   );
@@ -899,25 +827,19 @@ const StoryProcessSection = () => {
 
 // =====================================================
 // SIMPLE DIVIDER SECTION
-// Very small height (~40px), screen-wide
-// Absolutely grey color with 2px bottom border
-// Clean separator before footer
 // =====================================================
 const SimpleDivider = () => {
   return (
-    <div className="w-full h-10 bg-gray-300 border-b-2 border-gray-400"></div>
+    <div className="w-full h-24 bg-gray-300 border-b-2 border-gray-400"></div>
   );
 };
 
 // =====================================================
 // MAIN HOMEPAGE COMPONENT
-// Exports all sections in proper order
-// Fully responsive for mobile, tablet, and desktop
 // =====================================================
 export default function HomePage() {
   return (
     <main className="min-h-screen">
-      {/* All sections in order */}
       <HeroSection />
       <ReportSection />
       <CompanyHelpsSection />
@@ -925,8 +847,6 @@ export default function HomePage() {
       <FreeResourcesSection />
       <StoryProcessSection />
       <SimpleDivider />
-      
-      {/* Footer would go here (not included in this code) */}
     </main>
   );
 }
