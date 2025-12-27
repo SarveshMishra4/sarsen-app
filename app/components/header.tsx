@@ -156,43 +156,6 @@ export default function Header() {
         buttonText: "Try Now"
       }
     },
-    // investors: {
-    //   title: "Investor Relations",
-    //   description: "Information and resources for our investors and stakeholders.",
-    //   links: [
-    //     { 
-    //       label: "Financial Information", 
-    //       href: "/investors/financial",
-    //       description: "Financial statements and data"
-    //     },
-    //     { 
-    //       label: "Press Releases", 
-    //       href: "/investors/press",
-    //       description: "Latest company announcements"
-    //     },
-    //     { 
-    //       label: "Governance", 
-    //       href: "/investors/governance",
-    //       description: "Corporate governance details"
-    //     },
-    //     { 
-    //       label: "Contact IR", 
-    //       href: "/investors/contact",
-    //       description: "Reach our investor relations team"
-    //     },
-    //     { 
-    //       label: "Reports & Filings", 
-    //       href: "/investors/reports",
-    //       description: "Regulatory filings and reports"
-    //     },
-    //   ],
-    //   highlight: {
-    //     title: "Q4 Results",
-    //     description: "View latest earnings",
-    //     thumbnail: "/images/earnings-thumb.jpg",
-    //     buttonText: "View Details"
-    //   }
-    // },
   };
 
   const handleMouseEnter = (menu: keyof typeof megaMenuContent) => {
@@ -251,8 +214,12 @@ export default function Header() {
             
             {/* Logo */}
             <a href="/" className="flex items-center space-x-2 md:space-x-3 group">
-              <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/10 rounded-full">
-                <div className="text-white font-bold text-lg md:text-xl">S</div>
+              <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+                <img 
+                  src="/logo/Sarsen-White.svg" 
+                  alt="Sarsen Logo" 
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="text-white">
                 <div className="text-lg md:text-xl font-bold leading-tight">Sarsen</div>

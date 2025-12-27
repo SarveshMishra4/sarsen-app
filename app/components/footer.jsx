@@ -18,7 +18,7 @@ function Footer() {
             <Link href="/" className="inline-flex items-center space-x-3">
               <div className="relative w-12 h-12 flex items-center justify-center">
                 <Image
-                  src="/logo/Sarsen-Blue.png" // Your logo from public/Logo folder
+                  src="/logo/Sarsen-Blue.svg" // Your logo from public/Logo folder
                   alt="Sarsen & Company Logo"
                   width={48}
                   height={48}
