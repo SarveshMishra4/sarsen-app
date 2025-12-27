@@ -380,17 +380,407 @@ const HowWeWorkSection = () => {
 };
 
 // =====================================================
-// MAIN ABOUT PAGE COMPONENT - EXPORTS ALL SECTIONS
+// CLIENT SUCCESS SECTION (INDIRECT)
+// Light background showcasing impact without direct testimonials
+// =====================================================
+const ClientSuccessSection = () => {
+  const successMetrics = [
+    {
+      metric: "40%",
+      description: "Average reduction in customer acquisition costs for clients who implement our go-to-market frameworks",
+      category: "Growth"
+    },
+    {
+      metric: "2-3x",
+      description: "Typical improvement in operational efficiency after process optimization and team restructuring",
+      category: "Operations"
+    },
+    {
+      metric: "6-12 months",
+      description: "Cash runway extension achieved through strategic financial planning and cost optimization",
+      category: "Finance"
+    },
+    {
+      metric: "85%",
+      description: "Client implementation rate on delivered recommendations within first quarter post-engagement",
+      category: "Impact"
+    }
+  ];
+
+  const industryExperience = [
+    "Technology & SaaS",
+    "E-commerce & Retail",
+    "Professional Services",
+    "Healthcare & Wellness",
+    "Manufacturing & Distribution",
+    "Education & EdTech",
+    "Fintech & Financial Services",
+    "Consumer Products"
+  ];
+
+  return (
+    <section className="bg-[#E8EEF2] py-20 md:py-24 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-800 mb-6">
+            Client Impact & Experience
+          </h2>
+          <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+            Our work speaks through the results our clients achieve. Here's what we've helped businesses accomplish.
+          </p>
+        </div>
+
+        {/* Success Metrics Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          {successMetrics.map((item, index) => (
+            <div 
+              key={index}
+              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
+            >
+              <div className="text-sm text-blue-600 font-medium mb-3 uppercase tracking-wide">
+                {item.category}
+              </div>
+              <div className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
+                {item.metric}
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Industry Experience */}
+        <div className="bg-white rounded-2xl p-10 md:p-12 shadow-sm border border-gray-200">
+          <h3 className="text-2xl md:text-3xl font-light text-gray-800 mb-8 text-center">
+            Industry Experience
+          </h3>
+          <p className="text-gray-600 text-sm md:text-base text-center mb-10 max-w-3xl mx-auto">
+            We work across sectors because strategic and operational principles transcend industries. 
+            What matters is solving your specific business challenge, regardless of sector.
+          </p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {industryExperience.map((industry, index) => (
+              <div 
+                key={index}
+                className="bg-gradient-to-br from-gray-50 to-white rounded-lg p-4 text-center border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all duration-300"
+              >
+                <p className="text-gray-700 text-sm font-medium">
+                  {industry}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// OUR VALUES SECTION
+// Dark blue background with value cards
+// =====================================================
+const OurValuesSection = () => {
+  const values = [
+    {
+      title: "Operator Mindset",
+      description: "We think like entrepreneurs, not consultants. Every recommendation is built on what actually works in the real world, not what sounds good in theory.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      )
+    },
+    {
+      title: "Speed Without Compromise",
+      description: "Fast doesn't mean sloppy. We deliver quickly because we've solved similar problems before and know what works. Efficiency is a feature, not a bug.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      )
+    },
+    {
+      title: "Radical Transparency",
+      description: "If something won't work, we'll tell you. If a cheaper alternative exists, we'll recommend it. Our reputation is built on honesty, not maximizing engagement fees.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+      )
+    },
+    {
+      title: "Execution Focus",
+      description: "Strategy without execution is meaningless. Everything we deliver is designed to be implemented by your team, not to gather dust on a shelf.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+        </svg>
+      )
+    },
+    {
+      title: "Independence Over Dependency",
+      description: "We succeed when you don't need us anymore. The goal is to solve your problem and empower your team, not create perpetual consulting relationships.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      )
+    },
+    {
+      title: "Resourcefulness",
+      description: "Constraints breed creativity. Our expertise was built solving problems with limited resources, and we bring that discipline to every engagement.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    }
+  ];
+
+  return (
+    <section className="bg-[#0A1E3D] py-20 md:py-24 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-6">
+            Our Values
+          </h2>
+          <p className="text-gray-300 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+            These principles guide every decision we make and every recommendation we give.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {values.map((value, index) => (
+            <div 
+              key={index}
+              className="bg-gradient-to-br from-[#132B47] to-[#1a3a5c] rounded-xl p-8 hover:from-[#1a3a5c] hover:to-[#132B47] transition-all duration-300 border border-blue-900/30 hover:border-blue-700/50 group"
+            >
+              <div className="text-blue-400 mb-5 group-hover:scale-110 transition-transform duration-300">
+                {value.icon}
+              </div>
+              <h3 className="text-xl md:text-2xl text-white font-medium mb-4 group-hover:text-blue-300 transition-colors duration-300">
+                {value.title}
+              </h3>
+              <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                {value.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// LEADERSHIP TEAM SECTION
+// White background with founder/leadership profiles
+// =====================================================
+const LeadershipSection = () => {
+  const leadership = [
+    {
+      name: "Komal Sareen",
+      role: "Founder & Managing Director",
+      bio: "Serial entrepreneur with 12+ years of experience building and scaling businesses across technology and services sectors. Previously founded and exited two companies, with hands-on experience in everything from pre-revenue validation to ₹15Cr+ operations.",
+      expertise: ["Strategic Planning", "Fundraising", "Operations", "Growth Strategy"],
+      linkedin: "#",
+      image: "/team/komal.jpg"
+    }
+  ];
+
+  const advisors = [
+    {
+      name: "Advisory Board Member",
+      role: "Financial Strategy Advisor",
+      bio: "Former CFO at multiple startups and growth-stage companies. Expert in financial modeling, capital raising, and M&A transactions.",
+      linkedin: "#"
+    },
+    {
+      name: "Advisory Board Member",
+      role: "Technology & Product Advisor",
+      bio: "20+ years in product leadership at tech companies. Specializes in product-market fit validation and go-to-market strategy.",
+      linkedin: "#"
+    },
+    {
+      name: "Advisory Board Member",
+      role: "Operations & Scaling Advisor",
+      bio: "Operational leader with experience scaling companies from 10 to 500+ employees. Expert in process optimization and organizational design.",
+      linkedin: "#"
+    }
+  ];
+
+  return (
+    <section className="bg-white py-20 md:py-24 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-800 mb-6">
+            Leadership & Advisory
+          </h2>
+          <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
+            Led by operators with real entrepreneurial experience, supported by advisors with deep domain expertise.
+          </p>
+        </div>
+
+        {/* Founder Section */}
+        <div className="mb-20">
+          <h3 className="text-2xl md:text-3xl font-light text-gray-800 mb-10 pb-4 border-b-2 border-gray-300">
+            Founder
+          </h3>
+          
+          {leadership.map((leader, index) => (
+            <div key={index} className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-10 md:p-12 shadow-sm border border-gray-200">
+              <div className="grid lg:grid-cols-3 gap-10 items-start">
+                
+                {/* Photo */}
+                <div className="lg:col-span-1">
+                  <div className="relative w-full aspect-square max-w-xs mx-auto bg-gradient-to-br from-gray-300 to-gray-500 rounded-2xl overflow-hidden shadow-lg">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <svg className="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="lg:col-span-2 space-y-6">
+                  <div>
+                    <h4 className="text-2xl md:text-3xl text-gray-800 font-medium mb-2">
+                      {leader.name}
+                    </h4>
+                    <p className="text-blue-600 text-lg mb-4">
+                      {leader.role}
+                    </p>
+                  </div>
+
+                  <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                    {leader.bio}
+                  </p>
+
+                  <div>
+                    <p className="text-sm text-gray-600 font-medium mb-3 uppercase tracking-wide">
+                      Areas of Expertise
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {leader.expertise.map((skill, idx) => (
+                        <span 
+                          key={idx}
+                          className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <a 
+                    href={leader.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                  >
+                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    Connect on LinkedIn
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Advisory Board */}
+        <div>
+          <h3 className="text-2xl md:text-3xl font-light text-gray-800 mb-10 pb-4 border-b-2 border-gray-300">
+            Advisory Board
+          </h3>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {advisors.map((advisor, index) => (
+              <div 
+                key={index}
+                className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center mb-6 mx-auto">
+                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                </div>
+                
+                <h4 className="text-lg font-semibold text-gray-800 mb-2 text-center">
+                  {advisor.name}
+                </h4>
+                <p className="text-blue-600 text-sm mb-4 text-center">
+                  {advisor.role}
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed text-center">
+                  {advisor.bio}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// CTA SECTION
+// Final call to action before footer
+// =====================================================
+const CTASection = () => {
+  return (
+    <section className="bg-[#0A1E3D] py-20 md:py-24 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-6">
+          Ready to Work Together?
+        </h2>
+        <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-10">
+          If you're facing a critical business challenge and need strategic guidance backed by real 
+          operational experience, let's talk. We'll tell you honestly if we can help.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg transition-all duration-300 font-medium text-base shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group">
+            <span>Schedule a Consultation</span>
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </button>
+          <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#0A1E3D] px-8 py-4 rounded-lg transition-all duration-300 font-medium text-base">
+            View Our Services
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// =====================================================
+// MAIN ABOUT PAGE COMPONENT
 // =====================================================
 export default function AboutPage() {
   return (
     <main className="min-h-screen">
       <AboutHeroSection />
       <OurStorySection />
-      {/* <OurProcessSection />
-      <MissionVisionSection />
+      <WhyDifferentSection />
+      <HowWeWorkSection />
+      <ClientSuccessSection />
       <OurValuesSection />
-      <OurTeamSection /> */}
+      <LeadershipSection />
+      <CTASection />
     </main>
   );
 }
