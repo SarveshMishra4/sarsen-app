@@ -345,7 +345,7 @@ const FAQSection = () => {
   ];
 
   const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+const [openIndex, setOpenIndex] = useState<number | null>(null);
   };
 
 
