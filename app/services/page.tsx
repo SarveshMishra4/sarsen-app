@@ -34,7 +34,7 @@ const ServicesHero = () => {
 // SERVICE CARD COMPONENT
 // Reusable component for each service
 // =====================================================
-const ServiceCard = ({ service, index }) => {
+const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   const bgColors = [
