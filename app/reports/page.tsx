@@ -278,7 +278,13 @@ const FeaturedReport = () => {
 // REPORTS GRID SECTION
 // Main section with all reports
 // =====================================================
-const ReportsGrid = ({ activeFilter }) => {
+const FilterTabs = ({
+  activeFilter,
+  setActiveFilter,
+}: {
+  activeFilter: string;
+  setActiveFilter: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const allReports = [
     {
       category: 'Indian Startup Ecosystem',
