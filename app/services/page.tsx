@@ -66,7 +66,7 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
         <div className="mb-6 border-t border-white/20 pt-6">
           <h4 className="text-lg font-semibold mb-3">What We Do</h4>
           <ul className="space-y-2">
-            {service.whatWeDo.map((item, i) => (
+{service.whatWeDo.map((item: string, i: number) => (
               <li key={i} className="flex items-start">
                 <span className="text-blue-300 mr-3 mt-1">•</span>
                 <span className="text-white/90 text-sm">{item}</span>
