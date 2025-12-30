@@ -78,3 +78,117 @@ export interface Service {
     keywords: string[];            // SEO keywords
   };
 }
+
+// Add this to your existing types.ts file
+
+// =====================================================
+// TOOL/CALCULATOR DATA STRUCTURE
+// Resources are actually interactive tools
+// =====================================================
+export interface Tool {
+  // Basic Info
+  slug: string;                    // URL identifier (e.g., "valuation-calculator")
+  title: string;                   // Tool title
+  shortDescription: string;        // One-liner
+  category: 'finance' | 'sales' | 'marketing' | 'operations' | 'hr' | 'legal';
+  icon: string;                    // Icon name or URL
+  color: string;                   // Theme color e.g., "#3B82F6"
+  
+  // Hero Section
+  hero: {
+    headline: string;              // Main headline
+    subheadline: string;           // Supporting text
+    ctaText: string;               // Button text (e.g., "Calculate Now")
+  };
+  
+  // Tool Overview
+  overview: string;                // What this tool does
+  
+  // Tool Inputs Configuration
+  inputs: Array<{
+    id: string;                    // Unique ID for the input
+    label: string;                 // Display label
+    type: 'number' | 'text' | 'select' | 'checkbox' | 'range' | 'percentage';
+    defaultValue: any;             // Default value
+    placeholder?: string;          // Placeholder text
+    options?: Array<{             // For select/radio inputs
+      value: string;
+      label: string;
+    }>;
+    min?: number;                  // For number/range inputs
+    max?: number;
+    step?: number;
+    unit?: string;                 // e.g., "₹", "%", "months"
+    helpText?: string;             // Helper text below input
+    required: boolean;
+  }>;
+  
+  // Calculation Logic (this would be implemented in component)
+  calculationType: 'valuation' | 'pricing' | 'roi' | 'break-even' | 'conversion' | 'financial-projection';
+  
+  // Results Display Configuration
+  results: {
+    displayType: 'single-value' | 'multiple-values' | 'chart' | 'table' | 'timeline';
+    metrics: Array<{
+      label: string;               // Metric name
+      key: string;                 // Result key
+      format: 'currency' | 'percentage' | 'number' | 'time' | 'custom';
+      prefix?: string;             // e.g., "₹"
+      suffix?: string;             // e.g., "%"
+      description?: string;        // Explanation of metric
+    }>;
+    chartType?: 'bar' | 'line' | 'pie' | 'donut'; // If displayType is chart
+  };
+  
+  // Use Cases
+  useCases: Array<{
+    title: string;
+    description: string;
+    exampleValues: Record<string, any>; // Pre-filled inputs for this use case
+  }>;
+  
+  // Interpretation Guide
+  interpretation: {
+    title: string;
+    points: string[];              // How to interpret results
+    benchmarks?: Array<{           // Industry benchmarks
+      industry: string;
+      value: string;
+      description: string;
+    }>;
+  };
+  
+  // Export Options
+  exportOptions: {
+    pdf: boolean;
+    excel: boolean;
+    share: boolean;
+    save: boolean;
+  };
+  
+  // Related Tools
+  relatedTools: string[];          // Array of slugs
+  
+  // SEO Metadata
+  seo: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+  
+  // Tool Stats
+  stats: {
+    calculations: number;          // Number of calculations done
+    lastUpdated: string;           // Last update date
+    accuracy: string;              // e.g., "95% accurate"
+  };
+}
+
+// Tool Calculation Result Type
+export interface ToolResult {
+  success: boolean;
+  data: Record<string, any>;
+  insights: string[];
+  recommendations: string[];
+  timestamp: string;
+}
