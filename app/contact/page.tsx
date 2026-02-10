@@ -19,17 +19,15 @@ const ContactHeroSection = () => {
           {/* ==================== LEFT COLUMN ==================== */}
           {/* Headline and Subtext */}
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white font-light leading-tight">
-              Let's Start a Conversation
+            <h1 className="text-3xl sm:text-3xl lg:text-4xl text-white font-light ">
+              Bring Clarity to Your Business Decisions
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 font-light leading-relaxed">
-              Whether you're a bootstrapped startup or doing ₹10Cr annually, 
-              we're here to help you make smarter strategic decisions.
-            </p>
+            <p className="text-xl sm:text-xl text-gray-300 font-light leading-relaxed">
+We work with founders who need clarity before making high-impact decisions — growth, capital, pricing, or restructuring.            </p>
             <div className="pt-4">
               <p className="text-gray-400 text-base">
-                Fill out the form and we'll respond within 24 hours. 
-                Or reach out directly via email or phone.
+                Share a few details below and we’ll review your situation before responding.
+If there’s a clear way we can help, we’ll suggest next steps — if not, we’ll tell you that too.
               </p>
             </div>
           </div>
@@ -175,11 +173,11 @@ const ContactFormSection = () => {
               {/* Form Header */}
               <div className="mb-8">
                 <h2 className="text-3xl sm:text-4xl font-light text-gray-800 mb-3">
-                  Send us a Message
+                  Tell Us What’s Stuck
                 </h2>
                 <p className="text-gray-600 text-base">
-                  Tell us about your business and what you're looking for. 
-                  We'll get back to you within 24 hours.
+                  This isn’t a sales form. It’s the first step in understanding whether — and how — we can help.
+The more context you share, the more useful our response will be.
                 </p>
               </div>
 
@@ -199,7 +197,7 @@ const ContactFormSection = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-gray-800"
-                    placeholder="Rajesh Kumar"
+                    placeholder="Alex Doe"
                   />
                 </div>
 
@@ -219,7 +217,7 @@ const ContactFormSection = () => {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-gray-800"
-                      placeholder="rajesh@company.com"
+                      placeholder="alex@company.com"
                     />
                   </div>
 
@@ -262,7 +260,7 @@ const ContactFormSection = () => {
                   {/* Revenue Stage */}
                   <div>
                     <label htmlFor="revenueStage" className="block text-sm font-medium text-gray-700 mb-2">
-                      Current Stage
+                      Current Business Stage
                     </label>
                     <select
                       id="revenueStage"
@@ -285,7 +283,7 @@ const ContactFormSection = () => {
                   {/* Service Interest */}
                   <div>
                     <label htmlFor="serviceInterest" className="block text-sm font-medium text-gray-700 mb-2">
-                      Interested In
+                      Primary Area You Want To Improve
                     </label>
                     <select
                       id="serviceInterest"
@@ -308,7 +306,7 @@ const ContactFormSection = () => {
                 {/* Message Field */}
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Tell us about your challenge <span className="text-red-500">*</span>
+                    Briefly describe what feels unclear or risky right now <span className="text-red-500">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -318,7 +316,8 @@ const ContactFormSection = () => {
                     required
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent resize-none transition-all duration-300 text-gray-800"
-                    placeholder="Describe your business situation, what challenges you're facing, and what kind of help you're looking for..."
+                    placeholder="For example: stalled growth, fundraising confusion, pricing issues, team inefficiency, or strategic indecision.
+You don’t need a polished explanation — clarity comes later."
                   ></textarea>
                 </div>
 
@@ -338,7 +337,7 @@ const ContactFormSection = () => {
                     </>
                   ) : (
                     <>
-                      <span>Send Message</span>
+                      <span>Request a Review</span>
                       <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
@@ -354,8 +353,7 @@ const ContactFormSection = () => {
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       <div>
-                        <p className="text-green-800 font-medium">Message sent successfully!</p>
-                        <p className="text-green-700 text-sm">We'll get back to you within 24 hours.</p>
+                        <p className="text-green-800 font-medium">Message Recieved !</p>
                       </div>
                     </div>
                   </div>
@@ -367,7 +365,7 @@ const ContactFormSection = () => {
           </div>
 
           {/* ==================== RIGHT COLUMN - CONTACT INFO ==================== */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 flex flex-col justify-between">
             
             {/* Contact Information Card */}
             <div className="bg-gradient-to-br from-[#1E5A8E] to-[#2B7AB8] rounded-xl p-8 text-white shadow-xl">
@@ -448,53 +446,37 @@ const ContactFormSection = () => {
             {/* Quick Links Card */}
             <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200">
               <h3 className="text-xl font-medium text-gray-800 mb-4">
-                Quick Links
+                Explore Before Reaching Out
               </h3>
               
               <div className="space-y-3">
                 <a href="/services" className="flex items-center justify-between text-gray-700 hover:text-blue-600 transition-colors py-2 group">
-                  <span>View All Services</span>
+                  <span>How We Help Founders Decide</span>
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
                 
                 <a href="/resources" className="flex items-center justify-between text-gray-700 hover:text-blue-600 transition-colors py-2 group">
-                  <span>Free Resources</span>
+                  <span>Access Our Resources</span>
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
                 
                 <a href="/about" className="flex items-center justify-between text-gray-700 hover:text-blue-600 transition-colors py-2 group">
-                  <span>About Us</span>
+                  <span>Read Our Thinking</span>
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
                 
                 <a href="/blog" className="flex items-center justify-between text-gray-700 hover:text-blue-600 transition-colors py-2 group">
-                  <span>Blog & Insights</span>
+                  <span>How We’ve Helped Before</span>
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
-              </div>
-            </div>
-
-            {/* Response Time Notice */}
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
-              <div className="flex items-start">
-                <svg className="w-6 h-6 text-blue-500 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                </svg>
-                <div>
-                  <p className="text-blue-800 font-medium text-sm">Quick Response Guarantee</p>
-                  <p className="text-blue-700 text-sm mt-1 leading-relaxed">
-                    We typically respond to all inquiries within 24 hours. 
-                    Urgent matters will be addressed even faster.
-                  </p>
-                </div>
               </div>
             </div>
 
@@ -518,6 +500,10 @@ const FAQSection = () => {
     {
       question: "What types of businesses do you work with?",
       answer: "We work with businesses from pre-revenue startups to ₹10Cr revenue companies across all industries. Our expertise has been honed in resource-constrained startup environments, which means we bring exceptional value-per-rupee thinking to every client—whether you're bootstrapped or well-funded, B2B or B2C, tech or traditional."
+    },
+    {
+      question: "Do you offer free consultations or calls?",
+      answer: "No. We don’t believe in unpaid advisory conversations. Every interaction starts with a paid diagnostic session where we analyze your situation and provide structured guidance. This ensures focus, seriousness, and real value for both sides."
     },
     {
       question: "How long does a typical engagement last?",
@@ -545,7 +531,7 @@ const FAQSection = () => {
     },
     {
       question: "What if I'm not sure which service I need?",
-      answer: "That's completely normal. Book a free 30-minute discovery call with us. We'll discuss your business situation, identify your most pressing challenges, and recommend the right service (or combination of services). There's no pressure or sales pitch—just honest advice on what would help you most. Sometimes the answer is 'you don't need us yet'—and we'll tell you that."
+      answer: "That’s exactly what our Strategic Diagnostic & Direction engagement is designed for. Most founders don’t come to us with clearly defined problems — they come with symptoms. The diagnostic helps us identify what actually needs attention and what doesn’t. If you’re at an early stage, it brings clarity on direction, priorities, and what to focus on next. If you’re already generating revenue, it helps identify the constraints limiting growth. If you’re scaling, it surfaces operational, financial, or structural inefficiencies that need correction. The diagnostic is a paid, structured engagement and serves as the entry point to all our work. It ensures that any subsequent strategy or execution is based on facts, not assumptions."
     }
   ];
 
@@ -612,17 +598,15 @@ const FAQSection = () => {
 
         {/* Still Have Questions CTA */}
         <div className="mt-12 sm:mt-16 text-center">
-          <p className="text-gray-400 text-base mb-4">
-            Still have questions?
+          <p className="text-gray-400 text-xl">
+            Still have Questions ?
           </p>
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-300 flex items-center gap-2 mx-auto group"
+            className="text-blue-400 hover:text-blue-300 font-medium transition-colors duration-300 flex items-center gap-1 mx-auto group"
           >
             <span>Send us a message</span>
-            <svg className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
+
           </button>
         </div>
 
@@ -631,178 +615,7 @@ const FAQSection = () => {
   );
 };
 
-// =====================================================
-// OFFICE LOCATION SECTION
-// Light background with map and directions
-// Matches free resources section aesthetic
-// =====================================================
-const OfficeLocationSection = () => {
-  return (
-    <section className="bg-[#E8EEF2] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
 
-        {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-800 mb-4">
-            Visit Our Office
-          </h2>
-          <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">
-            Located in the heart of Bangalore's business district. 
-            Drop by for a coffee and a conversation about your business.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-
-          {/* ==================== LEFT COLUMN - MAP PLACEHOLDER ==================== */}
-          <div className="order-2 lg:order-1">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden h-96 sm:h-[450px]">
-              
-              {/* Map Placeholder - Replace with actual map integration */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 via-gray-300 to-gray-400 flex items-center justify-center relative">
-                
-                {/* Grid Pattern Background */}
-                <svg viewBox="0 0 400 400" className="w-full h-full opacity-20 absolute inset-0">
-                  {[0, 80, 160, 240, 320, 400].map((pos, i) => (
-                    <g key={i}>
-                      <line x1={pos} y1="0" x2={pos} y2="400" stroke="#666" strokeWidth="1" />
-                      <line x1="0" y1={pos} x2="400" y2={pos} stroke="#666" strokeWidth="1" />
-                    </g>
-                  ))}
-                </svg>
-
-                {/* Location Marker */}
-                <div className="relative z-10">
-                  <svg width="80" height="100" viewBox="0 0 80 100" className="drop-shadow-xl">
-                    {/* Marker Pin */}
-                    <path
-                      d="M 40 10 Q 25 10 15 22 Q 10 30 10 45 Q 10 65 40 95 Q 70 65 70 45 Q 70 30 65 22 Q 55 10 40 10 Z"
-                      fill="#1E5A8E"
-                      stroke="#0A1E3D"
-                      strokeWidth="2"
-                    />
-                    {/* Inner Circle */}
-                    <circle cx="40" cy="38" r="15" fill="white" />
-                    <circle cx="40" cy="38" r="8" fill="#1E5A8E" />
-                  </svg>
-                  
-                  <div className="text-center mt-4">
-                    <p className="text-gray-700 font-medium text-lg">Bangalore Office</p>
-                    <p className="text-gray-600 text-sm">Karnataka, India</p>
-                  </div>
-                </div>
-
-                {/* Map Integration Placeholder Text */}
-                <div className="absolute bottom-4 right-4 bg-white/90 px-4 py-2 rounded-lg shadow-md">
-                  <p className="text-gray-600 text-xs">
-                    🗺️ Google Maps Integration
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* Get Directions Button */}
-            <div className="mt-6">
-              <a 
-                href="https://maps.google.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0A1E3D] hover:bg-[#132B47] text-white px-8 py-4 rounded-lg transition-all duration-300 font-medium shadow-lg hover:shadow-xl group"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-                <span>Get Directions</span>
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          {/* ==================== RIGHT COLUMN - LOCATION INFO ==================== */}
-          <div className="order-1 lg:order-2 space-y-8">
-            
-            {/* Address Card */}
-            <div className="bg-gradient-to-br from-[#7B8FA5] to-[#8B9EB0] rounded-2xl p-8 text-white">
-              <div className="flex items-start gap-4 mb-6">
-                <svg className="w-8 h-8 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <div>
-                  <h3 className="text-2xl font-medium mb-3">Our Address</h3>
-                  <p className="text-white/90 text-lg leading-relaxed">
-                    Sareen & Company<br />
-                    123 Business District Road<br />
-                    Koramangala, 4th Block<br />
-                    Bangalore, Karnataka 560034<br />
-                    India
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Directions & Landmarks */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
-              <h3 className="text-xl font-medium text-gray-800 mb-4">
-                How to Reach Us
-              </h3>
-              
-              <div className="space-y-4 text-gray-700 text-sm sm:text-base">
-                <div>
-                  <p className="font-medium text-gray-800 mb-1">By Metro:</p>
-                  <p className="text-gray-600">
-                    Nearest station: Koramangala Metro (Purple Line)<br />
-                    5-minute walk from Exit B
-                  </p>
-                </div>
-
-                <div>
-                  <p className="font-medium text-gray-800 mb-1">By Car:</p>
-                  <p className="text-gray-600">
-                    Visitor parking available in basement<br />
-                    Entry via Gate 2 (Sony World Signal side)
-                  </p>
-                </div>
-
-                <div>
-                  <p className="font-medium text-gray-800 mb-1">Nearby Landmarks:</p>
-                  <ul className="text-gray-600 space-y-1 ml-4">
-                    <li>• Forum Mall (2 min walk)</li>
-                    <li>• Sony World Junction (opposite)</li>
-                    <li>• Jyoti Nivas College (5 min walk)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Office Hours Highlight */}
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
-              <div className="flex items-start">
-                <svg className="w-6 h-6 text-blue-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div>
-                  <p className="text-blue-800 font-medium text-sm">Walk-ins Welcome</p>
-                  <p className="text-blue-700 text-sm mt-1 leading-relaxed">
-                    Mon-Fri: 9:00 AM - 6:00 PM<br />
-                    Sat: 10:00 AM - 2:00 PM<br />
-                    <span className="text-blue-600 italic">We recommend scheduling ahead to ensure availability.</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // =====================================================
 // FINAL CTA SECTION
@@ -825,13 +638,13 @@ const FinalCTASection = () => {
 
         {/* Headline */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-6 leading-tight">
-          Ready to Make Smarter Strategic Decisions?
+          If the Decision Is Important, Treat It Seriously
         </h2>
 
         {/* Subtext */}
         <p className="text-gray-300 text-lg sm:text-xl mb-10 sm:mb-12 leading-relaxed max-w-3xl mx-auto">
-          Whether you need help with fundraising, growth strategy, or operations—we're here. 
-          Book a free 30-minute discovery call to discuss your challenges.
+          Our diagnostic sessions are designed for founders who value clarity over guesswork.
+Start with a paid strategic diagnostic to determine the right path forward.
         </p>
 
         {/* CTA Buttons */}
@@ -842,10 +655,7 @@ const FinalCTASection = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-lg transition-all duration-300 font-medium text-base sm:text-lg shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 group"
           >
-            <span>Book Free Discovery Call</span>
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+            <span>Book a Diagostic Session</span>
           </button>
 
           {/* Secondary CTA */}
@@ -853,7 +663,7 @@ const FinalCTASection = () => {
             href="/services"
             className="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white hover:text-[#0A1E3D] text-white px-8 sm:px-10 py-4 sm:py-5 rounded-lg transition-all duration-300 font-medium text-base sm:text-lg flex items-center justify-center gap-3 group"
           >
-            <span>Explore Services</span>
+            <span>Our Case Studies</span>
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
@@ -861,7 +671,7 @@ const FinalCTASection = () => {
         </div>
 
         {/* Trust Indicators */}
-        <div className="mt-12 sm:mt-16 pt-12 border-t border-blue-900/30">
+        <div className="mt-12 sm:mt-16 pt-12 ">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             
             <div>
@@ -923,7 +733,6 @@ export default function ContactPage() {
       <ContactHeroSection />
       <ContactFormSection />
       <FAQSection />
-      <OfficeLocationSection />
       <FinalCTASection />
       <SimpleDivider />
       

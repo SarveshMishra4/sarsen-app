@@ -18,7 +18,7 @@ const AboutHero = () => {
                 About Us
               </h1>
               <p className="text-xl sm:text-2xl text-blue-300 font-light leading-relaxed">
-                Strategic consulting powered by diagnostic rigor, quantitative analysis, and fact-based insights.
+                Strategic diagnostics and execution-ready thinking for founders operating under real constraints.
               </p>
             </div>
 
@@ -27,19 +27,27 @@ const AboutHero = () => {
                 <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
                 </svg>
-                <span className="text-sm sm:text-base">Data-driven strategy consulting for growth-stage businesses</span>
+                <span className="text-sm sm:text-base">
+                  Diagnostic-first strategy for founder-led and growth-stage businesses
+                </span>
               </div>
+
               <div className="flex items-center gap-3 text-gray-300">
                 <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
                 </svg>
-                <span className="text-sm sm:text-base">Diagnostic, dividend-driven, and quantitative approach</span>
+                <span className="text-sm sm:text-base">
+                  Quantitative, constraint-aware analysis focused on decision-critical outcomes
+                </span>
               </div>
+
               <div className="flex items-center gap-3 text-gray-300">
                 <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
                 </svg>
-                <span className="text-sm sm:text-base">No generic advisory—only actionable strategic counsel</span>
+                <span className="text-sm sm:text-base">
+                  No generic advisory — only structured thinking that translates into execution
+                </span>
               </div>
             </div>
           </div>
@@ -51,16 +59,20 @@ const AboutHero = () => {
                   <svg className="w-24 h-24 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                   </svg>
-                  <p className="text-sm">Strategic Excellence<br/>Illustration Placeholder</p>
+                  <p className="text-sm">
+                    Strategic Diagnostics<br />Illustration Placeholder
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
   );
 };
+
 
 // =====================================================
 // WHY WE EXIST SECTION
@@ -74,9 +86,9 @@ const WhyWeExistSection = () => {
             Why We Exist
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-            Growth-stage businesses face critical strategic decisions that can define their trajectory for years to come. 
-            Yet, they often encounter advisors who offer generic frameworks and theoretical solutions disconnected from 
-            ground realities.
+            Growth-stage businesses face decisions that are irreversible, capital-intensive, and time-bound. 
+            Yet many founders are forced to rely on advice that is generic, surface-level, and detached from 
+            the realities of operating under real constraints.
           </p>
         </div>
 
@@ -89,12 +101,12 @@ const WhyWeExistSection = () => {
             </div>
             <h3 className="text-2xl font-medium text-gray-800 mb-4">The Problem</h3>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Most consulting firms apply one-size-fits-all methodologies, relying on abstract advice that sounds impressive 
-              but fails to address the unique challenges and opportunities of each business.
+              Most advisory firms rely on standardized frameworks and recycled playbooks. The output often 
+              looks polished, but fails to account for context, constraints, and execution realities.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              Growth-stage companies need concrete, actionable strategies grounded in rigorous analysis—not 
-              PowerPoint presentations filled with buzzwords and generic best practices.
+              Founders do not need theoretical advice. They need decision-grade analysis that clarifies trade-offs, 
+              highlights risks, and supports actions that can actually be executed.
             </p>
           </div>
 
@@ -106,13 +118,12 @@ const WhyWeExistSection = () => {
             </div>
             <h3 className="text-2xl font-medium text-gray-800 mb-4">Our Solution</h3>
             <p className="text-gray-600 leading-relaxed mb-4">
-              We exist to bridge this gap. Our approach is diagnostic, dividend-driven, and quantitative. 
-              We dig deep into your business model, market dynamics, and competitive landscape to uncover the 
-              real levers of growth.
+              We exist to address this gap through a diagnostic-first approach. Every engagement begins with 
+              understanding how the business actually works—financially, operationally, and strategically.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              We dont just advise—we consult. We work alongside you to develop strategies backed by data, 
-              analysis, and a thorough understanding of your specific context.
+              We do not position ourselves as passive advisors. We work alongside founders to structure 
+              decisions using data, analysis, and a clear understanding of second-order effects.
             </p>
           </div>
         </div>
@@ -121,9 +132,9 @@ const WhyWeExistSection = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl sm:text-3xl font-light mb-4">Our Core Belief</h3>
             <p className="text-lg sm:text-xl leading-relaxed opacity-95">
-              Strategy is not about grand visions disconnected from reality. It's about making informed, 
-              evidence-based decisions that drive measurable outcomes. Every recommendation we make is rooted 
-              in rigorous analysis, market intelligence, and a deep understanding of what actually works.
+              Strategy is not storytelling. It is the disciplined process of making informed decisions under 
+              uncertainty. Every recommendation we deliver is grounded in evidence, quantitative reasoning, 
+              and a clear view of what can realistically be executed.
             </p>
           </div>
         </div>
@@ -131,6 +142,7 @@ const WhyWeExistSection = () => {
     </section>
   );
 };
+
 
 // =====================================================
 // MISSION & VISION SECTION
@@ -231,12 +243,13 @@ const ThesisSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
         </svg>
       ),
-      description: 'We start by thoroughly diagnosing your business situation. Through deep-dive analysis of your business model, competitive landscape, and market dynamics, we identify the root causes of challenges and untapped opportunities.',
+      description:
+        'Every engagement begins with diagnosis, not assumptions. We first establish how the business actually works—where value is created, where it leaks, and which constraints truly matter—before any strategy is proposed.',
       highlights: [
-        'Comprehensive business and market audits',
-        'Competitive intelligence and positioning analysis',
-        'Customer segmentation and value proposition mapping',
-        'Operational efficiency and capability assessments'
+        'End-to-end business model and market diagnostics',
+        'Competitive positioning and strategic disadvantage analysis',
+        'Customer segmentation and value-driver mapping',
+        'Operational bottleneck and capability assessments'
       ]
     },
     {
@@ -246,12 +259,13 @@ const ThesisSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       ),
-      description: 'Every strategy we develop is oriented toward delivering tangible, measurable outcomes. We focus on strategies that generate real dividends—whether financial returns, market share gains, or operational improvements.',
+      description:
+        'We do not optimise for elegant strategy documents. We optimise for outcomes. Every recommendation is evaluated against its ability to produce measurable dividends—revenue growth, margin improvement, risk reduction, or execution speed.',
       highlights: [
-        'Clear ROI projections for strategic initiatives',
-        'Growth trajectory modeling and scenario planning',
-        'Performance metrics and KPI frameworks',
-        'Implementation roadmaps with milestone tracking'
+        'Explicit ROI logic for every strategic initiative',
+        'Scenario-based growth and downside modeling',
+        'Clear success metrics and decision thresholds',
+        'Execution roadmaps tied to milestones, not timelines'
       ]
     },
     {
@@ -261,12 +275,13 @@ const ThesisSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
-      description: 'Our recommendations are anchored in data and rigorous quantitative analysis. We leverage market research, financial modeling, and statistical analysis to ensure our strategies are grounded in facts, not assumptions.',
+      description:
+        'Our work is anchored in numbers, not narratives. We use financial models, market data, and sensitivity analysis to stress-test decisions and expose second-order effects before they become expensive mistakes.',
       highlights: [
-        'Market sizing and revenue forecasting models',
-        'Financial scenario analysis and sensitivity testing',
-        'Customer lifetime value and unit economics',
-        'Data-driven segmentation and targeting'
+        'Market sizing and revenue build-up models',
+        'Unit economics, contribution margins, and LTV analysis',
+        'Scenario and sensitivity testing for key assumptions',
+        'Data-backed prioritisation of strategic options'
       ]
     },
     {
@@ -276,12 +291,13 @@ const ThesisSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      description: 'We dont rely on generic frameworks or theoretical constructs. Every insight, recommendation, and strategy is backed by verifiable facts drawn from primary research, market intelligence, and empirical evidence.',
+      description:
+        'We avoid generic frameworks and unverified assumptions. Every insight is supported by evidence drawn from primary research, market data, and observed operating realities.',
       highlights: [
-        'Primary research including customer interviews',
-        'Industry benchmarking and competitive intelligence',
-        'Regulatory and market trend analysis',
-        'Evidence-based best practice identification'
+        'Primary research including customer and operator interviews',
+        'Competitive and industry benchmarking',
+        'Regulatory, pricing, and market-structure analysis',
+        'Evidence-backed best-practice validation'
       ]
     }
   ];
@@ -294,23 +310,28 @@ const ThesisSection = () => {
             Our Strategic Thesis
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Our consulting approach is built on four foundational principles that ensure every engagement 
-            delivers measurable strategic value.
+            Our work is guided by a clear thesis: strategy should reduce uncertainty, clarify trade-offs, 
+            and enable decisive action under real-world constraints.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {principles.map((principle, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-8 sm:p-10 hover:shadow-xl transition-all duration-300">
-              <div className="flex items-start gap-4 mb-6">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-lg p-8 sm:p-10 hover:shadow-xl transition-all duration-300"
+            >
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 bg-gradient-to-br from-[#1E5A8E] to-[#2B7AB8] rounded-lg flex items-center justify-center flex-shrink-0 text-white">
                   {principle.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-medium text-gray-800 mb-2">{principle.title}</h3>
+                  <h3 className="text-2xl font-medium text-gray-800 mb-2">
+                    {principle.title}
+                  </h3>
                 </div>
               </div>
-              
+
               <p className="text-gray-600 leading-relaxed mb-6">
                 {principle.description}
               </p>
@@ -318,10 +339,16 @@ const ThesisSection = () => {
               <div className="space-y-2">
                 {principle.highlights.map((highlight, idx) => (
                   <div key={idx} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                    <svg
+                      className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
                     </svg>
-                    <span className="text-sm text-gray-600 leading-tight">{highlight}</span>
+                    <span className="text-sm text-gray-600 leading-tight">
+                      {highlight}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -337,38 +364,46 @@ const ThesisSection = () => {
             <div className="grid sm:grid-cols-2 gap-6 text-white">
               <div className="flex items-start gap-3">
                 <svg className="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
                 <div>
                   <p className="font-medium mb-1">No Generic Frameworks</p>
-                  <p className="text-sm text-white/90">Custom strategies tailored to your specific business context</p>
+                  <p className="text-sm text-white/90">
+                    Every engagement is structured from first principles
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <svg className="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
                 <div>
-                  <p className="font-medium mb-1">Deep Industry Expertise</p>
-                  <p className="text-sm text-white/90">Specialized knowledge of Indian startup and growth ecosystem</p>
+                  <p className="font-medium mb-1">Context-Aware Strategy</p>
+                  <p className="text-sm text-white/90">
+                    Decisions shaped by capital, timing, and execution realities
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <svg className="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
                 <div>
-                  <p className="font-medium mb-1">Founder-Centric Approach</p>
-                  <p className="text-sm text-white/90">We work alongside you, not just present recommendations</p>
+                  <p className="font-medium mb-1">Founder-Aligned Execution</p>
+                  <p className="text-sm text-white/90">
+                    We work alongside decision-makers, not around them
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <svg className="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
                 <div>
-                  <p className="font-medium mb-1">Measurable Impact</p>
-                  <p className="text-sm text-white/90">Every engagement tied to clear, trackable business outcomes</p>
+                  <p className="font-medium mb-1">Decision-Grade Output</p>
+                  <p className="text-sm text-white/90">
+                    Clear trade-offs, quantified risk, and actionable next steps
+                  </p>
                 </div>
               </div>
             </div>
@@ -378,6 +413,7 @@ const ThesisSection = () => {
     </section>
   );
 };
+
 
 // =====================================================
 // TEAM SECTION
@@ -464,9 +500,7 @@ const TeamSection = () => {
             </p>
             <button className="bg-white text-[#0A1E3D] px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-medium shadow-lg inline-flex items-center justify-center gap-2 group">
               <span>View Open Positions</span>
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              
             </button>
           </div>
         </div>
@@ -486,25 +520,24 @@ const CTASection = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
             <div className="p-8 sm:p-10 lg:p-12">
-              <h2 className="text-3xl sm:text-4xl text-white font-light mb-4 leading-tight">
-                Ready to Work Together?
+              <h2 className="text-3xl sm:text-4xl text-white font-light mb-4 ">
+                Start with a Strategic Diagnostic
               </h2>
-              <p className="text-white/90 text-base sm:text-lg leading-relaxed mb-8">
-                Let's discuss how our diagnostic, data-driven approach can help your business achieve 
-                its strategic goals. Schedule a consultation to explore how we can partner with you.
+              <p className="text-white/90 text-base sm:text-lg mb-8">
+                We do not offer free calls or exploratory conversations. Every engagement begins with a paid
+                strategic diagnostic designed to clarify your situation, surface real constraints, and define
+                decision-ready next steps.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-white text-[#0A1E3D] px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors font-medium shadow-lg inline-flex items-center justify-center gap-2 group">
-                  <span>Schedule Consultation</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+                  <span>Initiate Diagnostic Engagement</span>
+                  
                 </button>
                 <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white/10 transition-colors font-medium inline-flex items-center justify-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  <span>Contact Us</span>
+                  <span>Formal Inquiry</span>
                 </button>
               </div>
             </div>
@@ -517,7 +550,9 @@ const CTASection = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                   </div>
-                  <p className="text-sm opacity-90">Let's Start<br/>the Conversation</p>
+                  <p className="text-sm opacity-90">
+                    Serious Decisions<br />Begin with Clarity
+                  </p>
                 </div>
               </div>
             </div>
@@ -532,7 +567,7 @@ const CTASection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <h3 className="font-medium text-gray-800 mb-2">Email Us</h3>
+            <h3 className="font-medium text-gray-800 mb-2">Email</h3>
             <p className="text-sm text-gray-600">contact@yourfirm.com</p>
           </div>
 
@@ -542,7 +577,7 @@ const CTASection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
             </div>
-            <h3 className="font-medium text-gray-800 mb-2">Call Us</h3>
+            <h3 className="font-medium text-gray-800 mb-2">Phone</h3>
             <p className="text-sm text-gray-600">+91 98765 43210</p>
           </div>
 
@@ -553,7 +588,7 @@ const CTASection = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h3 className="font-medium text-gray-800 mb-2">Visit Us</h3>
+            <h3 className="font-medium text-gray-800 mb-2">Location</h3>
             <p className="text-sm text-gray-600">Mumbai, India</p>
           </div>
         </div>
@@ -561,6 +596,7 @@ const CTASection = () => {
     </section>
   );
 };
+
 
 // =====================================================
 // MAIN ABOUT PAGE COMPONENT
@@ -570,7 +606,6 @@ export default function AboutPage() {
     <main className="min-h-screen">
       <AboutHero />
       <WhyWeExistSection />
-      <MissionVisionSection />
       <ThesisSection />
       <TeamSection />
       <CTASection />

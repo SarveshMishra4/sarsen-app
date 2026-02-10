@@ -46,13 +46,12 @@ const useTypingEffect = (phrases: string[], typingSpeed = 100, deletingSpeed = 5
 // =====================================================
 const HeroSection = () => {
   const problemPhrases = [
-    "Struggling with customer acquisition costs?",
-    "Unable to find the right clients?",
-    "Cash flow issues keeping you up at night?",
-    "Losing deals to competitors on price?",
-    "Marketing spend with no clear ROI?",
-    "Team growing but revenue stagnant?",
-    "Need funding but don't know where to start?"
+  "Unsure whether to scale or fix fundamentals ?",
+  "Making decisions without knowing their second-order effects ?",
+  "Growing activity, but unclear if the business is actually improving ?",
+  "Confusing traction with progress ?",
+  "Preparing to raise, but unsure if the business is structurally fundable ?",
+  "Working harder, yet feeling less in control of the business ?"
   ];
 
   const typedProblem = useTypingEffect(problemPhrases, 80, 40, 2500);
@@ -90,13 +89,13 @@ const HeroSection = () => {
 
             <div className="space-y-4">
               <h2 className="text-xl sm:text-2xl text-white font-light tracking-wide">
-                Are you an entrepreneur?
+                Running a startup means making irreversible decisions with incomplete information.
               </h2>
               
               <div className="min-h-[80px] sm:min-h-[100px]">
-                <p className="text-2xl sm:text-3xl md:text-4xl text-blue-300 font-light leading-tight">
+                <p className="text-xl sm:text-2xl md:text-2xl text-blue-300 font-light leading-tight">
                   {typedProblem}
-                  <span className="animate-pulse">|</span>
+                  <span className="animate-pulse"></span>
                 </p>
               </div>
             </div>
@@ -123,92 +122,169 @@ const HeroSection = () => {
 // =====================================================
 // REPORT SECTION COMPONENT
 // =====================================================
+
 const ReportSection = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    // TODO: connect to backend / email automation later
+  };
+
   return (
-    <section className="bg-[#d4dce5] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          
-          <div className="space-y-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-800 leading-tight">
-              Indian Startup Ecosystem Report 2024
-            </h2>
+    <>
+      <section className="bg-[#d4dce5] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             
-            <div className="space-y-4">
-              <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
-                Comprehensive analysis of India's startup landscape covering funding trends, 
-                sector-wise growth patterns, emerging opportunities across tier-1 and tier-2 
-                cities, and strategic insights for founders and investors.
-              </p>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                Based on data from 5,000+ startups, 200+ investor interviews, and ground-level 
-                research across 15 major startup hubs. Essential reading for anyone navigating 
-                the Indian entrepreneurial ecosystem.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V19z"/>
-                </svg>
-                <span>142 pages</span>
+            <div className="space-y-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-800 leading-tight">
+                Indian Startup Ecosystem Report 2026
+              </h2>
+              
+              <div className="space-y-4">
+                <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
+                  Comprehensive analysis of India's startup landscape covering funding trends, 
+                  sector-wise growth patterns, emerging opportunities across tier-1 and tier-2 
+                  cities, and strategic insights for founders and investors.
+                </p>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                  Based on data from 5,000+ startups, 200+ investor interviews, and ground-level 
+                  research across 15 major startup hubs. Essential reading for anyone navigating 
+                  the Indian entrepreneurial ecosystem.
+                </p>
               </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                </svg>
-                <span>Last updated: Dec 2024</span>
-              </div>
-            </div>
-          </div>
 
-          <div className="relative flex justify-center lg:justify-end">
-            <div className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-md w-full transform transition-transform duration-300 hover:scale-105">
-              <div className="bg-gradient-to-br from-[#1E5A8E] to-[#2B7AB8] h-72 sm:h-80 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10">
-                  <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full"></div>
-                  <div className="absolute bottom-10 right-10 w-24 h-24 border-2 border-white rounded-full"></div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 border border-white rounded-full"></div>
+              <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+                  </svg>
+                  <span>142 pages</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2z" />
+                  </svg>
+                  <span>Last updated: Feb 2026</span>
+                </div>
+              </div>
+            </div>
 
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-8 text-center">
-                  <div className="mb-6">
-                    <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-                      </svg>
-                    </div>
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-md w-full transform transition-transform duration-300 hover:scale-105">
+                <div className="bg-gradient-to-br from-[#1E5A8E] to-[#2B7AB8] h-72 sm:h-80 relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full"></div>
+                    <div className="absolute bottom-10 right-10 w-24 h-24 border-2 border-white rounded-full"></div>
                   </div>
 
-                  <h3 className="text-xl font-semibold mb-2">Indian Startup</h3>
-                  <h3 className="text-2xl font-bold mb-4">Ecosystem Report</h3>
-                  <div className="text-sm opacity-90">2024 Edition</div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-8 text-center">
+                    <div className="mb-6">
+                      <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                        <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Indian Startup</h3>
+                    <h3 className="text-2xl font-bold mb-4">Ecosystem Report</h3>
+                    <div className="text-sm opacity-90">2026 Edition</div>
+                  </div>
                 </div>
-
-                <div className="absolute right-6 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-white"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-white/70"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-white/50"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-white/30"></div>
+                
+                <div className="p-6 bg-white">
+                  <button
+                    onClick={() => setShowModal(true)}
+                    className="w-full bg-[#0A1E3D] hover:bg-[#132B47] text-white py-3.5 px-6 rounded-lg transition-all duration-300 font-medium text-base flex items-center justify-center gap-2"
+                  >
+                    Request Full Report
+                  </button>
                 </div>
-              </div>
-              
-              <div className="p-6 bg-white">
-                <button className="w-full bg-[#0A1E3D] hover:bg-[#132B47] text-white py-3.5 px-6 rounded-lg transition-all duration-300 font-medium text-base flex items-center justify-center gap-2 group">
-                  <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  Download Report
-                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {showModal && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
+          <div className="bg-white max-w-lg w-full rounded-xl p-6 sm:p-8 relative">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+              ✕
+            </button>
+
+            {!submitted ? (
+              <>
+                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
+                  Request the full report
+                </h3>
+                <p className="text-sm text-gray-600 mb-6">
+                  We’ll email you the report and use responses to improve future research.
+                </p>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <input required placeholder="Full Name" className="w-full border px-4 py-3 rounded-lg" />
+                  <input required type="email" placeholder="Work Email" className="w-full border px-4 py-3 rounded-lg" />
+                  <input required placeholder="Phone Number" className="w-full border px-4 py-3 rounded-lg" />
+
+                  <select required className="w-full border px-4 py-3 rounded-lg">
+                    <option value="">Which best describes you?</option>
+                    <option>Founder / Co-founder</option>
+                    <option>CXO / Leadership</option>
+                    <option>Early Employee</option>
+                    <option>Investor / Advisor</option>
+                    <option>Exploring entrepreneurship</option>
+                  </select>
+
+                  <select required className="w-full border px-4 py-3 rounded-lg">
+                    <option value="">Current business stage</option>
+                    <option>Pre-idea / Exploring</option>
+                    <option>Idea validated, no revenue</option>
+                    <option>Early revenue (₹0–50L)</option>
+                    <option>Scaling (₹50L–₹5Cr)</option>
+                    <option>Preparing to raise capital</option>
+                    <option>Post-fundraise</option>
+                  </select>
+
+                  <select required className="w-full border px-4 py-3 rounded-lg">
+                    <option value="">Biggest uncertainty right now</option>
+                    <option>Are we scaling too early ?</option>
+                    <option>Are these the right customers ?</option>
+                    <option>Does our pricing actually work ?</option>
+                    <option>Are we fundable ?</option>
+                    <option>Are we missing something critical ?</option>
+                    <option>Unsure or Something Else</option>
+                  </select>
+
+                  <button type="submit" className="w-full bg-[#0A1E3D] text-white py-3 rounded-lg">
+                    Email me the report
+                  </button>
+                </form>
+              </>
+            ) : (
+              <div className="text-center py-10">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+                  Check your email
+                </h3>
+                <p className="text-gray-600">
+                  Your copy is being sent shortly.  
+                  If you’d like help interpreting it for your business, you can request a clarity conversation anytime.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
+
 
 // =====================================================
 // COMPANY HELPS SECTION - REDESIGNED WITH CARDS
@@ -222,24 +298,24 @@ const CompanyHelpsSection = () => {
 
   const expertiseAreas = [
     {
-      title: "Growth & Revenue Strategy",
-      description: "Go-to-market planning, sales system development, pricing optimization, customer acquisition frameworks, and revenue diversification strategies for businesses from pre-revenue to ₹10Cr. We help reduce customer acquisition costs, systematize sales processes, and diversify revenue streams effectively.",
+      title: "When Sales Effort Isn’t Turning Into Predictable Revenue",
+      description: "Founders often assume growth problems are marketing problems. In reality, the issue is usually unclear positioning, fragile pricing, or a sales process that only works when the founder is involved. We redesign how revenue is generated — from who you sell to, how you price, and how deals actually close — so growth stops being dependent on hustle and starts becoming repeatable.",
     },
     {
-      title: "Financial Planning & Capital",
-      description: "Cash flow management systems, fundraising readiness, financial modeling, profit improvement planning, and business valuation for funding, scaling, or exit scenarios. Our work prepares businesses for fundraising, optimizes cash flow, and improves margins sustainably.",
+      title: "When Cash Feels Tight Despite “Decent” Revenue",
+      description: "Many businesses don’t fail because they aren’t profitable on paper — they fail because cash timing, burn structure, and growth decisions are misaligned. We help founders understand where money is actually leaking, how long the business can realistically operate, and whether raising capital, slowing down, or restructuring is the right move — before the situation becomes urgent.",
     },
     {
-      title: "Operations & Efficiency",
-      description: "Business process optimization, cost reduction audits, supply chain management, team structure design, and performance management systems that drive operational excellence. Expect process efficiency gains, significant cost reduction, and enhanced team productivity.",
+      title: "When the Business Runs on You Instead of Systems",
+      description: "If decisions, approvals, and problem-solving keep flowing back to the founder, scale becomes impossible. We design operating systems — roles, processes, metrics, and accountability — so the business can function without constant intervention, reducing chaos, delays, and silent burnout inside teams.",
     },
     {
-      title: "Strategic Planning & Positioning",
-      description: "Annual strategic planning, competitive intelligence, market positioning, digital transformation roadmaps, and turnaround strategies for businesses facing critical inflection points. We deliver strategic clarity, competitive differentiation, and strong market positioning.",
+      title: "When Direction Feels Unclear or Reactive",
+      description: "Many teams stay busy without moving meaningfully forward. Initiatives change every quarter, priorities shift, and long-term direction remains vague. We help founders step out of reactive decision-making and build a clear strategic direction — deciding what not to pursue as deliberately as what to focus on.",
     },
     {
-      title: "Product & Innovation",
-      description: "Product-market fit validation, new product launch planning, innovation frameworks, and customer feedback systems to ensure you're building what the market actually wants. Our approach validates products, ensures launch success, and builds innovation capability within teams.",
+      title: "When You’re Unsure If the Product Is the Real Problem",
+      description: "Founders often sense something is wrong but can’t tell whether it’s the product, the customer, the market, or the messaging. We help isolate whether the issue is product-market fit, positioning, or execution — so teams stop rebuilding blindly and start fixing the right constraint.",
     }
   ];
 
@@ -274,12 +350,14 @@ const CompanyHelpsSection = () => {
         
         <div className="max-w-4xl mb-16 sm:mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white mb-6 leading-tight">
-            What Sareen & Company Specializes In
+            Sarsen & Company Specializes In
           </h2>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            We serve businesses from self-funded startups to ₹10Cr revenue companies. Our expertise 
-            has been sharpened in the most resource-constrained environments—early-stage startups—where 
-            every decision matters and every rupee counts.
+            We work with founders at moments where progress slows, decisions feel heavier, and effort no longer translates into results.
+
+These are not execution problems. They are structural problems — in pricing, positioning, capital planning, internal systems, or the product itself.
+
+Our work begins by identifying what is actually broken, not what looks broken on the surface.
           </p>
         </div>
 
@@ -327,24 +405,22 @@ const CompanyHelpsSection = () => {
           ))}
         </div>
 
-        <div className="mt-16 sm:mt-20 pt-12 border-t border-blue-900/30">
+        <div className="mt-16 sm:mt-20 ">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
             <div className="max-w-2xl">
               <p className="text-gray-300 text-base sm:text-lg mb-2">
-                Every engagement delivers tangible outputs—financial models, strategic roadmaps, 
-                process documents, and frameworks you can implement immediately.
+                Every engagement starts with clarity — not assumptions.
+
+Founders leave with a precise understanding of what is broken, why it is broken, and what sequence of decisions actually matters next.
               </p>
-              <p className="text-gray-500 text-sm">
-                No vague advice. No consulting dependency. Just clear plans your team can execute.
-              </p>
+              <p className="text-gray-500 text-base">
+No motivational advice. No dependency. Just structured thinking you can execute.              </p>
             </div>
 
             <div className="flex-shrink-0">
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg transition-all duration-300 font-medium text-base shadow-lg hover:shadow-xl flex items-center gap-3 group">
-                <span>View All Services</span>
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <span>Read Our Case Studies</span>
+                
               </button>
             </div>
           </div>
@@ -419,7 +495,7 @@ const TestimonialsSection = () => {
         
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-gray-800 mb-6">
-            Accomplished Entrepreneurs Understand What You Don't
+            Accomplished Entrepreneurs Understand This
           </h2>
           <p className="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
             Those who have built billion-dollar businesses emphasize the critical importance of 
@@ -442,15 +518,15 @@ const TestimonialsSection = () => {
                   </svg>
                 </div>
 
-                <blockquote className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6 italic">
-                  "{entrepreneurs[activeIndex].quote}"
+                <blockquote className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
+                  {entrepreneurs[activeIndex].quote}
                 </blockquote>
 
-                <div className="pt-4 border-t border-gray-300">
+                <div className="pt-4 ">
                   <p className="text-gray-900 font-semibold text-lg mb-1">
                     {entrepreneurs[activeIndex].name}
                   </p>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-base">
                     {entrepreneurs[activeIndex].title}
                   </p>
                 </div>
@@ -710,13 +786,10 @@ const StoryProcessSection = () => {
           
           <div className="max-w-4xl">
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
-              Founded by entrepreneurs who have built, scaled, and exited businesses across multiple 
-              industries, we bring real-world expertise to every engagement. We've lived the challenges 
-              our clients face—from bootstrapping with zero capital to managing ₹10Cr operations.
+       Most founders don’t lack effort or intelligence — they lack clear signal. Too many variables change at once: growth stalls, cash tightens, teams slow down, and every decision feels risky.
             </p>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              That experience taught us one thing: strategy without execution is worthless. Our process 
-              is designed to deliver clarity, actionable plans, and measurable results—fast.
+              Our process exists to remove noise before prescribing action. We don’t start with solutions. We start by isolating what actually matters, so every subsequent decision becomes easier, faster, and defensible.
             </p>
           </div>
         </div>
@@ -789,35 +862,12 @@ const StoryProcessSection = () => {
           </svg>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
-          <div className="text-center">
-            <div className="text-blue-400 mb-3">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h4 className="text-white text-lg sm:text-xl font-medium mb-2">Fast Turnaround</h4>
-            <p className="text-gray-400 text-sm">Most projects: 2 weeks. You get answers fast, not in 3-month engagements.</p>
-          </div>
+        <div className="pt-4">
 
           <div className="text-center">
-            <div className="text-blue-400 mb-3">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </div>
-            <h4 className="text-white text-lg sm:text-xl font-medium mb-2">Tangible Outputs</h4>
-            <p className="text-gray-400 text-sm">Excel models, frameworks, plans—things you can use immediately, not vague advice.</p>
-          </div>
-
-          <div className="text-center">
-            <div className="text-blue-400 mb-3">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-            </div>
-            <h4 className="text-white text-lg sm:text-xl font-medium mb-2">Execution-Ready</h4>
-            <p className="text-gray-400 text-sm">Your team can implement immediately. No consulting dependency created.</p>
+            <h4 className="text-white text-lg sm:text-xl font-medium mb-2">Designed for Founder-Led Execution</h4>
+            <p className="text-gray-400 text-sm">We step in to clarify decisions, not to run your business.
+The goal is independence, not ongoing consulting.</p>
           </div>
         </div>
       </div>
@@ -825,14 +875,7 @@ const StoryProcessSection = () => {
   );
 };
 
-// =====================================================
-// SIMPLE DIVIDER SECTION
-// =====================================================
-const SimpleDivider = () => {
-  return (
-    <div className="w-full h-24 bg-gray-300 border-b-2 border-gray-400"></div>
-  );
-};
+
 
 // =====================================================
 // MAIN HOMEPAGE COMPONENT
@@ -844,9 +887,7 @@ export default function HomePage() {
       <ReportSection />
       <CompanyHelpsSection />
       <TestimonialsSection />
-      <FreeResourcesSection />
       <StoryProcessSection />
-      <SimpleDivider />
     </main>
   );
 }
